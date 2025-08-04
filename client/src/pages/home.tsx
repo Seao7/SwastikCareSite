@@ -1,0 +1,169 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import ServiceCard from "@/components/ui/service-card";
+import { Eye, Users, Heart, Cog, CheckCircle, Calendar, Phone, Ambulance } from "lucide-react";
+import { Link } from "wouter";
+
+export default function Home() {
+  const services = [
+    {
+      icon: <Eye className="text-white" size={24} />,
+      title: "Comprehensive Eye Care",
+      description: "Complete eye examinations, vision correction, and treatment of eye diseases with cutting-edge technology.",
+      features: ["Eye Examinations", "Cataract Surgery", "Retinal Treatment"],
+      iconColor: "bg-medical-blue"
+    },
+    {
+      icon: <svg className="text-white w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>,
+      title: "Complete Dental Care",
+      description: "Full-service dental treatments from routine cleanings to advanced cosmetic and restorative procedures.",
+      features: ["General Dentistry", "Cosmetic Dentistry", "Orthodontics"],
+      iconColor: "bg-soft-teal"
+    },
+    {
+      icon: <Ambulance className="text-white" size={24} />,
+      title: "Emergency Services",
+      description: "24/7 emergency care for urgent eye and dental conditions with immediate response and treatment.",
+      features: ["24/7 Availability", "Rapid Response", "Expert Emergency Care"],
+      iconColor: "bg-red-500"
+    }
+  ];
+
+  const whyChooseFeatures = [
+    {
+      icon: <Users className="text-white text-sm" />,
+      title: "Expert Medical Team",
+      description: "Highly qualified specialists with years of experience in eye and dental care.",
+      color: "bg-medical-blue"
+    },
+    {
+      icon: <Cog className="text-white text-sm" />,
+      title: "Advanced Technology",
+      description: "State-of-the-art equipment ensuring precise diagnosis and effective treatment.",
+      color: "bg-soft-teal"
+    },
+    {
+      icon: <Heart className="text-white text-sm" />,
+      title: "Compassionate Care",
+      description: "Patient-centered approach with personalized treatment plans and comfort-focused environment.",
+      color: "bg-calm-green"
+    }
+  ];
+
+  return (
+    <div data-testid="home-page">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-blue-50 to-white py-20 lg:py-28" data-testid="hero-section">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight" data-testid="hero-title">
+                  Your Vision & Smile <br />
+                  <span className="medical-blue">Matter to Us</span>
+                </h1>
+                <p className="text-xl medical-gray leading-relaxed" data-testid="hero-description">
+                  Comprehensive eye and dental care with state-of-the-art technology and compassionate service for your entire family.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button className="bg-medical-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg" data-testid="book-appointment-button">
+                  <Calendar className="mr-2" size={20} />
+                  Book Appointment
+                </Button>
+                <Link href="/contact">
+                  <Button variant="outline" className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-colors" data-testid="contact-us-button">
+                    <Phone className="mr-2" size={20} />
+                    Contact Us
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                alt="Modern medical facility interior" 
+                className="rounded-2xl shadow-2xl w-full h-auto"
+                data-testid="hero-image"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg border">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-calm-green rounded-full flex items-center justify-center">
+                    <CheckCircle className="text-white" size={20} />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900">Trusted Care</p>
+                    <p className="text-sm medical-gray">1000+ Happy Patients</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-gray-50" data-testid="services-section">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4" data-testid="services-title">Our Specialized Services</h2>
+            <p className="text-xl medical-gray max-w-3xl mx-auto" data-testid="services-description">
+              Comprehensive healthcare solutions with advanced technology and experienced professionals
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <ServiceCard
+                key={index}
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                features={service.features}
+                iconColor={service.iconColor}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-20" data-testid="why-choose-section">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <img 
+                src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                alt="Professional medical team consultation" 
+                className="rounded-2xl shadow-xl w-full h-auto"
+                data-testid="why-choose-image"
+              />
+            </div>
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4" data-testid="why-choose-title">Why Choose Swastik Care?</h2>
+                <p className="text-xl medical-gray" data-testid="why-choose-description">
+                  Your health and comfort are our top priorities. We combine experience with innovation to deliver exceptional care.
+                </p>
+              </div>
+              
+              <div className="space-y-6">
+                {whyChooseFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-start space-x-4" data-testid={`why-choose-feature-${index}`}>
+                    <div className={`w-8 h-8 ${feature.color} rounded-full flex items-center justify-center flex-shrink-0 mt-1`}>
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-2">{feature.title}</h4>
+                      <p className="medical-gray">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
