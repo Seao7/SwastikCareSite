@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import ServiceCard from "@/components/ui/service-card";
 import { Eye, Users, Heart, Cog, CheckCircle, Calendar, Phone, Ambulance } from "lucide-react";
 import { Link } from "wouter";
+import { ImageCarousel } from "@/components/ui/image-carousel";
 
 export default function Home() {
   const services = [
@@ -89,11 +90,19 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Modern eye examination equipment and dental chair in medical facility" 
-                className="rounded-2xl shadow-2xl w-full h-auto"
-                data-testid="hero-image"
+              <ImageCarousel
+                images={[
+                  {
+                    src: "/clinic-interior.png",
+                    alt: "Modern eye examination room with advanced equipment at Swastik Eye & Dental Care"
+                  },
+                  {
+                    src: "/dental-care.png", 
+                    alt: "Professional dental care setup with modern equipment"
+                  }
+                ]}
+                className="rounded-2xl shadow-2xl w-full h-96"
+                testId="hero-image-carousel"
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg border">
                 <div className="flex items-center space-x-4">
@@ -156,11 +165,19 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <img 
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Eye examination and dental consultation with modern equipment" 
-                className="rounded-2xl shadow-xl w-full h-auto"
-                data-testid="why-choose-image"
+              <ImageCarousel
+                images={[
+                  {
+                    src: "/dental-care.png",
+                    alt: "Professional dental care setup with modern equipment"
+                  },
+                  {
+                    src: "/clinic-interior.png", 
+                    alt: "Modern eye examination room with advanced equipment"
+                  }
+                ]}
+                className="rounded-2xl shadow-xl w-full h-96"
+                testId="why-choose-image-carousel"
               />
             </div>
             <div className="space-y-8">
