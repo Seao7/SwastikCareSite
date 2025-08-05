@@ -60,7 +60,7 @@ export default function Contact() {
     {
       icon: <MapPin className="text-white" size={20} />,
       title: "Visit Our Clinic",
-      content: "Swastik Eye & Dental Care\nRoadways, Sahadatpura\nMau - 275101, Uttar Pradesh, India",
+      content: "Swastik Eye & Dental Care\nSahadatapura, Near Roadways\nMau - 275101, Uttar Pradesh, India",
       color: "bg-medical-blue"
     },
     {
@@ -71,7 +71,7 @@ export default function Contact() {
     },
     {
       icon: <Mail className="text-white" size={20} />,
-      title: "Book Appointment",
+      title: "Book your Appointment at",
       content: "Call: 99562 39488\nDirect appointment booking",
       color: "bg-calm-green"
     },
@@ -85,28 +85,22 @@ export default function Contact() {
 
   const quickActions = [
     {
-      icon: <TriangleAlert className="text-white" size={24} />,
-      title: "Emergency Care",
-      description: "For urgent medical situations requiring immediate attention.",
-      buttonText: "Call Emergency",
-      color: "bg-red-500",
-      borderColor: "border-red-100"
-    },
-    {
       icon: <Calendar className="text-white" size={24} />,
       title: "Book Appointment",
       description: "Schedule your consultation at your convenient time.",
-      buttonText: "Schedule Now",
+      buttonText: "Call: 99562 39488",
       color: "bg-medical-blue",
-      borderColor: "border-blue-100"
+      borderColor: "border-blue-100",
+      action: "tel:+919956239488"
     },
     {
       icon: <MessageCircle className="text-white" size={24} />,
       title: "General Inquiry",
       description: "Have questions about our services or need information?",
-      buttonText: "Start Chat",
+      buttonText: "Send Message",
       color: "bg-soft-teal",
-      borderColor: "border-cyan-100"
+      borderColor: "border-cyan-100",
+      action: "scroll-to-form"
     }
   ];
 
@@ -123,7 +117,7 @@ export default function Contact() {
       />
 
       {/* Contact Information & Form */}
-      <section className="py-20" data-testid="contact-form-section">
+      <section className="py-20" data-testid="contact-form-section" id="contact-form-section">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Information */}
@@ -319,7 +313,7 @@ export default function Contact() {
             <p className="text-xl medical-gray" data-testid="quick-contact-description">Choose the fastest way to reach us based on your needs</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {quickActions.map((action, index) => (
               <Card key={index} className={`bg-white rounded-2xl shadow-lg text-center border-2 ${action.borderColor}`} data-testid={`quick-action-${index}`}>
                 <CardContent className="p-8">
@@ -328,9 +322,26 @@ export default function Contact() {
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{action.title}</h3>
                   <p className="medical-gray mb-6">{action.description}</p>
-                  <Button className={`${action.color.replace('bg-', 'bg-')} text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-colors w-full`} data-testid={`button-${action.title.toLowerCase().replace(' ', '-')}`}>
-                    {action.buttonText}
-                  </Button>
+                  {action.action === "tel:+919956239488" ? (
+                    <a href={action.action}>
+                      <Button className={`${action.color} text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-colors w-full`} data-testid={`button-${action.title.toLowerCase().replace(' ', '-')}`}>
+                        {action.buttonText}
+                      </Button>
+                    </a>
+                  ) : (
+                    <Button 
+                      className={`${action.color} text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-colors w-full`} 
+                      data-testid={`button-${action.title.toLowerCase().replace(' ', '-')}`}
+                      onClick={() => {
+                        const formElement = document.getElementById('contact-form-section');
+                        if (formElement) {
+                          formElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                    >
+                      {action.buttonText}
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             ))}

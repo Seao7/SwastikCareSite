@@ -26,13 +26,7 @@ export default function About() {
       imageUrl: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
       roleColor: "calm-green"
     },
-    {
-      name: "Dr. Priyanka Tripathi",
-      role: "Visiting Orthodontist",
-      description: "Expert orthodontist specializing in teeth alignment, braces, and corrective dental treatments.",
-      imageUrl: "https://images.unsplash.com/photo-1594824375822-0ce1ab7b49f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
-      roleColor: "purple-500"
-    }
+
   ];
 
   const values = [
@@ -143,7 +137,7 @@ export default function About() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <TeamMember
                 key={index}

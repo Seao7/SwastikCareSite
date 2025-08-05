@@ -10,13 +10,13 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
               <img 
-                src="/logo.png" 
+                src="/logo-new.png" 
                 alt="Swastik Eye & Dental Care Logo"
-                className="w-12 h-12 object-contain"
+                className="w-16 h-16 object-contain"
               />
               <div>
                 <h3 className="text-xl font-bold">Swastik Eye & Dental Care</h3>
-                <p className="text-gray-400 text-sm">Roadways, Sahadatpura, Mau</p>
+                <p className="text-gray-400 text-sm">Sahadatapura, Near Roadways, Mau</p>
               </div>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
@@ -56,7 +56,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <MapPin className="medical-blue mt-1" size={16} />
-                <p className="text-gray-300 text-sm">Swastik Eye & Dental Care<br />Roadways, Sahadatpura<br />Mau - 275101, Uttar Pradesh, India</p>
+                <p className="text-gray-300 text-sm">Swastik Eye & Dental Care<br />Sahadatapura, Near Roadways<br />Mau - 275101, Uttar Pradesh, India</p>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="medical-blue" size={16} />
@@ -64,7 +64,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="medical-blue" size={16} />
-                <p className="text-gray-300 text-sm">appointment: 99562 39488</p>
+                <p className="text-gray-300 text-sm">Book your Appointment at: 99562 39488</p>
               </div>
             </div>
           </div>

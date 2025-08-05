@@ -16,8 +16,8 @@ export default function Home() {
     {
       icon: <svg className="text-white w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>,
       title: "Complete Dental Care",
-      description: "Full-service dental treatments with in-house optical and medical facilities for comprehensive oral health care.",
-      features: ["General Dentistry", "Cosmetic Dentistry", "Orthodontics", "In-house Optical"],
+      description: "Full-service dental treatments from routine cleanings to advanced cosmetic and restorative procedures.",
+      features: ["General Dentistry", "Cosmetic Dentistry", "Orthodontics", "Oral Surgery"],
       iconColor: "bg-soft-teal"
     },
     {
@@ -30,8 +30,8 @@ export default function Home() {
     {
       icon: <Ambulance className="text-white" size={24} />,
       title: "Complete Facilities",
-      description: "Modern clinic with parking space, in-house medical facilities, and emergency care for patient convenience.",
-      features: ["Parking Available", "Emergency Care", "In-house Medical", "Modern Equipment"],
+      description: "Modern clinic with parking space, in-house optical and medical facilities for patient convenience.",
+      features: ["Parking Available", "In-house Optical", "In-house Medical", "Modern Equipment"],
       iconColor: "bg-purple-600"
     }
   ];
@@ -90,7 +90,7 @@ export default function Home() {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1609188076864-c35269136352?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
                 alt="Modern eye examination equipment and dental chair in medical facility" 
                 className="rounded-2xl shadow-2xl w-full h-auto"
                 data-testid="hero-image"
@@ -157,7 +157,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
                 alt="Eye examination and dental consultation with modern equipment" 
                 className="rounded-2xl shadow-xl w-full h-auto"
                 data-testid="why-choose-image"

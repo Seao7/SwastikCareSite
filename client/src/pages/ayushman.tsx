@@ -105,7 +105,7 @@ export default function Ayushman() {
             </div>
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
                 alt="Healthcare professionals providing medical care" 
                 className="rounded-2xl shadow-xl w-full h-auto"
                 data-testid="ayushman-about-image"
@@ -222,14 +222,16 @@ export default function Ayushman() {
                 Call: 99562 39488
               </Button>
             </a>
-            <Button 
-              variant="outline" 
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium hover:bg-white hover:text-green-600 transition-colors"
-              data-testid="cta-eligibility-button"
-            >
-              <FileText className="mr-2" size={20} />
-              Check Eligibility Online
-            </Button>
+            <a href="https://beneficiary.nha.gov.in/" target="_blank" rel="noopener noreferrer">
+              <Button 
+                variant="outline" 
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium hover:bg-white hover:text-green-600 transition-colors"
+                data-testid="cta-eligibility-button"
+              >
+                <FileText className="mr-2" size={20} />
+                Check Eligibility Online
+              </Button>
+            </a>
           </div>
         </div>
       </section>

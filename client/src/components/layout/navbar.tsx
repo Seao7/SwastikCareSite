@@ -27,13 +27,13 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3" data-testid="logo-link">
             <img 
-              src="/logo.png" 
+              src="/logo-new.png" 
               alt="Swastik Eye & Dental Care Logo"
-              className="w-12 h-12 object-contain"
+              className="w-16 h-16 object-contain"
             />
             <div>
               <h1 className="text-xl font-bold text-gray-900">Swastik Eye & Dental Care</h1>
-              <p className="text-xs medical-gray">Roadways, Sahadatpura, Mau</p>
+              <p className="text-xs medical-gray">Sahadatapura, Near Roadways, Mau</p>
             </div>
           </Link>
 
