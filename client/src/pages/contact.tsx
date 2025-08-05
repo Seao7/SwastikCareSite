@@ -34,37 +34,33 @@ export default function Contact() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContact) => {
-      // Create a hidden form and submit it to Web3Forms
-      const form = document.createElement('form');
-      form.action = 'https://api.web3forms.com/submit';
-      form.method = 'POST';
-      form.style.display = 'none';
+      // Use Web3Forms with proper headers
+      const formData = new FormData();
+      formData.append('access_key', 'a1abad7f-135a-4f8f-86d0-cf13e3fc5e62');
+      formData.append('name', `${data.firstName || ''} ${data.lastName || ''}`.trim());
+      formData.append('email', data.email || '');
+      formData.append('phone', data.phone || '');
+      formData.append('service', data.serviceInterest || '');
+      formData.append('message', data.message || '');
+      formData.append('subject', `New Contact Form - ${data.firstName || ''} ${data.lastName || ''}`.trim());
+      formData.append('from_name', 'Swastik Eye & Dental Care Website');
+      formData.append('to_email', 'sedcmau@gmail.com');
 
-      // Add form fields
-      const fields = {
-        access_key: 'a1abad7f-135a-4f8f-86d0-cf13e3fc5e62',
-        name: `${data.firstName || ''} ${data.lastName || ''}`.trim(),
-        email: data.email || '',
-        phone: data.phone || '',
-        service: data.serviceInterest || '',
-        message: data.message || '',
-        subject: `New Contact Form - ${data.firstName || ''} ${data.lastName || ''}`.trim(),
-        redirect: window.location.href
-      };
-
-      Object.entries(fields).forEach(([key, value]) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = value;
-        form.appendChild(input);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
 
-      document.body.appendChild(form);
-      form.submit();
-      document.body.removeChild(form);
+      const result = await response.json();
+      
+      if (!result.success) {
+        throw new Error(result.message || 'Failed to send message');
+      }
 
-      return { success: true };
+      return result;
     },
     onSuccess: () => {
       toast({
@@ -74,11 +70,20 @@ export default function Contact() {
       form.reset();
     },
     onError: (error: Error) => {
-      toast({
-        title: "Error sending message",
-        description: error.message,
-        variant: "destructive",
-      });
+      console.error('Contact form error:', error);
+      if (error.message.includes('domain TLD is blocked')) {
+        toast({
+          title: "Contact form temporarily unavailable",
+          description: "Please call us at +91 99562 39488 or WhatsApp us for immediate assistance",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error sending message",
+          description: "Please call us directly at +91 99562 39488 or email sedcmau@gmail.com",
+          variant: "destructive",
+        });
+      }
     },
   });
 

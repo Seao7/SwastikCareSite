@@ -8,6 +8,12 @@ Preferred communication style: Simple, everyday language.
 
 # System Architecture
 
+## Contact Form Status
+- **Web3Forms Integration**: Implemented with access key a1abad7f-135a-4f8f-86d0-cf13e3fc5e62
+- **Current Issue**: Web3Forms blocks replit.dev domains by default - contact support to whitelist domain
+- **Fallback**: Clear error messages directing users to call +91 99562 39488 or email sedcmau@gmail.com
+- **For Production**: Web3Forms will work properly once deployed to custom domain
+
 ## Frontend Architecture
 - **Framework**: React 18 with TypeScript for type safety and modern development
 - **Routing**: Wouter for lightweight client-side routing with pages for Home, About, Contact, and 404
