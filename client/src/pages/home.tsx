@@ -63,14 +63,16 @@ export default function Home() {
                   <span className="medical-blue">Matter to Us</span>
                 </h1>
                 <p className="text-xl medical-gray leading-relaxed" data-testid="hero-description">
-                  Comprehensive eye and dental care with state-of-the-art technology and compassionate service for your entire family.
+                  Expert eye and dental care by qualified professionals Dr. R.N. Agrawal (MS KGMU) and Dr. Ruchi Agrawal (BDS) at Mau, Uttar Pradesh.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-medical-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg" data-testid="book-appointment-button">
-                  <Calendar className="mr-2" size={20} />
-                  Book Appointment
-                </Button>
+                <a href="tel:+919956239488">
+                  <Button className="bg-medical-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg" data-testid="book-appointment-button">
+                    <Calendar className="mr-2" size={20} />
+                    Call: 99562 39488
+                  </Button>
+                </a>
                 <Link href="/contact">
                   <Button variant="outline" className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-colors" data-testid="contact-us-button">
                     <Phone className="mr-2" size={20} />

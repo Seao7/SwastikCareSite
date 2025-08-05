@@ -1,6 +1,6 @@
 # Overview
 
-This is a full-stack healthcare website for "Swastik Eye & Dental Care" built with React frontend and Express.js backend. The application provides a professional medical practice website with contact forms, service information, team details, and appointment booking functionality. It features a modern UI using shadcn/ui components with a medical-themed design system and is configured for PostgreSQL database integration through Drizzle ORM.
+This is a full-stack healthcare website for "Swastik Eye & Dental Care" built with React frontend and Express.js backend. The application provides a professional medical practice website located at Roadways, Sahadatpura, Mau - 275101, Uttar Pradesh, India. It features real clinic information including actual doctors (Dr. R.N. Agrawal - Eye Surgeon MS KGMU, Dr. Ruchi Agrawal - Dentist BDS, Dr. Rahul - Retina Specialist, Dr. Priyanka Tripathi - Orthodontist) and appointment contact number (99562 39488). The website includes contact forms, service information, team details, and direct calling functionality with a modern UI using shadcn/ui components and medical-themed design system.
 
 # User Preferences
 

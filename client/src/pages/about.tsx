@@ -6,25 +6,32 @@ import { Target, Eye, CheckCircle, Microscope, Stethoscope, Sofa } from "lucide-
 export default function About() {
   const teamMembers = [
     {
-      name: "Dr. Sarah Johnson",
-      role: "Chief Ophthalmologist",
-      description: "15+ years of experience in comprehensive eye care and advanced surgical procedures.",
+      name: "Dr. R.N. Agrawal",
+      role: "Eye Surgeon (MS KGMU)",
+      description: "Expert eye surgeon with MS qualification from King George's Medical University, providing comprehensive eye care and surgical procedures.",
       imageUrl: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
       roleColor: "medical-blue"
     },
     {
-      name: "Dr. Michael Chen",
-      role: "Senior Dental Surgeon",
-      description: "Specialist in cosmetic and restorative dentistry with advanced training in oral surgery.",
+      name: "Dr. Ruchi Agrawal",
+      role: "Dentist (BDS Lucknow)",
+      description: "Qualified dentist with BDS from Lucknow, specializing in comprehensive dental care and oral health services.",
       imageUrl: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
       roleColor: "soft-teal"
     },
     {
-      name: "Dr. Priya Patel",
-      role: "Pediatric Specialist",
-      description: "Dedicated to providing gentle and specialized care for children's eye and dental health.",
+      name: "Dr. Rahul",
+      role: "Visiting Retina Specialist",
+      description: "Specialist in retinal conditions and treatments, providing expert care for complex eye conditions.",
       imageUrl: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
       roleColor: "calm-green"
+    },
+    {
+      name: "Dr. Priyanka Tripathi",
+      role: "Visiting Orthodontist",
+      description: "Expert orthodontist specializing in teeth alignment, braces, and corrective dental treatments.",
+      imageUrl: "https://images.unsplash.com/photo-1594824375822-0ce1ab7b49f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+      roleColor: "purple-500"
     }
   ];
 

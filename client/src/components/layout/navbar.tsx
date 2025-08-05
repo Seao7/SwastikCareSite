@@ -25,12 +25,14 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3" data-testid="logo-link">
-            <div className="w-10 h-10 bg-medical-blue rounded-lg flex items-center justify-center">
-              <Eye className="text-white" size={20} />
-            </div>
+            <img 
+              src="/logo.jpeg" 
+              alt="Swastik Eye & Dental Care Logo"
+              className="w-10 h-10 rounded-lg object-cover"
+            />
             <div>
               <h1 className="text-xl font-bold text-gray-900">Swastik Eye & Dental Care</h1>
-              <p className="text-xs medical-gray">Professional Healthcare</p>
+              <p className="text-xs medical-gray">Roadways, Sahadatpura, Mau</p>
             </div>
           </Link>
 

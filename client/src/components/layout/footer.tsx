@@ -9,16 +9,18 @@ export default function Footer() {
           {/* Hospital Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-medical-blue rounded-lg flex items-center justify-center">
-                <Eye className="text-white" size={20} />
-              </div>
+              <img 
+                src="/logo.jpeg" 
+                alt="Swastik Eye & Dental Care Logo"
+                className="w-10 h-10 rounded-lg object-cover"
+              />
               <div>
                 <h3 className="text-xl font-bold">Swastik Eye & Dental Care</h3>
-                <p className="text-gray-400 text-sm">Professional Healthcare</p>
+                <p className="text-gray-400 text-sm">Roadways, Sahadatpura, Mau</p>
               </div>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
-              Providing comprehensive eye and dental care with state-of-the-art technology and compassionate service for your entire family's health and wellbeing.
+              Expert eye and dental care services by qualified professionals. Dr. R.N. Agrawal (MS KGMU) and Dr. Ruchi Agrawal (BDS Lucknow) providing comprehensive healthcare for your family.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-medical-blue transition-colors" data-testid="social-facebook">
@@ -54,15 +56,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <MapPin className="medical-blue mt-1" size={16} />
-                <p className="text-gray-300 text-sm">123 Healthcare Avenue<br />Medical District, City 560001</p>
+                <p className="text-gray-300 text-sm">Swastik Eye & Dental Care<br />Roadways, Sahadatpura<br />Mau - 275101, Uttar Pradesh, India</p>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="medical-blue" size={16} />
-                <p className="text-gray-300 text-sm">+91 98765 43210</p>
+                <p className="text-gray-300 text-sm">+91 99562 39488</p>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="medical-blue" size={16} />
-                <p className="text-gray-300 text-sm">info@swastikeye.com</p>
+                <p className="text-gray-300 text-sm">appointment: 99562 39488</p>
               </div>
             </div>
           </div>

@@ -60,25 +60,25 @@ export default function Contact() {
     {
       icon: <MapPin className="text-white" size={20} />,
       title: "Visit Our Clinic",
-      content: "123 Healthcare Avenue\nMedical District, City 560001\nState, Country",
+      content: "Swastik Eye & Dental Care\nRoadways, Sahadatpura\nMau - 275101, Uttar Pradesh, India",
       color: "bg-medical-blue"
     },
     {
       icon: <Phone className="text-white" size={20} />,
       title: "Call Us",
-      content: "Primary: +91 98765 43210\nEmergency: +91 98765 43211",
+      content: "Appointment: +91 99562 39488\nFor all inquiries and bookings",
       color: "bg-soft-teal"
     },
     {
       icon: <Mail className="text-white" size={20} />,
-      title: "Email Us",
-      content: "info@swastikeye.com\nappointments@swastikeye.com",
+      title: "Book Appointment",
+      content: "Call: 99562 39488\nDirect appointment booking",
       color: "bg-calm-green"
     },
     {
       icon: <Clock className="text-white" size={20} />,
-      title: "Operating Hours",
-      content: "Monday - Friday: 9:00 AM - 7:00 PM\nSaturday: 9:00 AM - 5:00 PM\nSunday: 10:00 AM - 4:00 PM\nEmergency: 24/7",
+      title: "Our Specialists",
+      content: "Dr. R.N. Agrawal - Eye Surgeon (MS KGMU)\nDr. Ruchi Agrawal - Dentist (BDS)\nDr. Rahul - Retina Specialist\nDr. Priyanka - Orthodontist",
       color: "bg-purple-500"
     }
   ];
@@ -230,6 +230,7 @@ export default function Contact() {
                               type="tel" 
                               placeholder="Enter your phone number" 
                               {...field} 
+                              value={field.value || ""}
                               data-testid="input-phone"
                             />
                           </FormControl>
@@ -244,7 +245,7 @@ export default function Contact() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Service Interest</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <Select onValueChange={field.onChange} defaultValue={field.value || ""}>
                             <FormControl>
                               <SelectTrigger data-testid="select-service-interest">
                                 <SelectValue placeholder="Select a service" />
