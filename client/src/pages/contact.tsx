@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import HeroSection from "@/components/ui/hero-section";
-import InteractiveMap from "@/components/ui/interactive-map";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -34,7 +34,26 @@ export default function Contact() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContact) => {
-      return apiRequest("POST", "/api/contacts", data);
+      // Use Web3Forms for form submission
+      const formData = new FormData();
+      formData.append('access_key', 'YOUR_WEB3FORMS_ACCESS_KEY'); // Get from web3forms.com
+      formData.append('name', `${data.firstName} ${data.lastName}`);
+      formData.append('email', data.email);
+      formData.append('phone', data.phone);
+      formData.append('service', data.serviceInterest);
+      formData.append('message', data.message);
+      formData.append('subject', `New Contact Form - ${data.firstName} ${data.lastName}`);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      return response.json();
     },
     onSuccess: () => {
       toast({
@@ -42,7 +61,6 @@ export default function Contact() {
         description: "We will get back to you soon.",
       });
       form.reset();
-      queryClient.invalidateQueries({ queryKey: ["/api/contacts"] });
     },
     onError: (error: Error) => {
       toast({
@@ -349,14 +367,70 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Interactive Map */}
+      {/* Location Map */}
       <section className="py-20" data-testid="map-section">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4" data-testid="map-title">Visit Our Clinic</h2>
-            <p className="text-xl medical-gray" data-testid="map-description">Find us easily with our interactive location map</p>
+            <p className="text-xl medical-gray" data-testid="map-description">Find us easily at our convenient location</p>
           </div>
-          <InteractiveMap className="max-w-4xl mx-auto" />
+          
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+              <div className="relative">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.123456789!2d83.5617892!3d25.9520734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDU3JzA3LjUiTiA4M8KwMzMnNDIuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  width="100%" 
+                  height="400" 
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Swastik Eye & Dental Care Location"
+                  className="w-full"
+                  data-testid="google-maps-embed"
+                />
+                <div className="absolute top-4 left-4 bg-white rounded-lg p-4 shadow-lg">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-medical-blue rounded-lg flex items-center justify-center">
+                      <MapPin className="text-white" size={20} />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Swastik Eye & Dental Care</h4>
+                      <p className="text-sm text-gray-600">Sahadatapura, Near Roadways</p>
+                      <p className="text-sm text-gray-600">Mau - 275101, UP</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-6 bg-gray-50">
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="flex items-center space-x-3">
+                    <Phone className="text-medical-blue" size={20} />
+                    <div>
+                      <p className="font-medium text-gray-900">Call Us</p>
+                      <p className="text-sm text-gray-600">+91 99562 39488</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Mail className="text-medical-blue" size={20} />
+                    <div>
+                      <p className="font-medium text-gray-900">Email</p>
+                      <p className="text-sm text-gray-600">sedcmau@gmail.com</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="text-medical-blue" size={20} />
+                    <div>
+                      <p className="font-medium text-gray-900">Hours</p>
+                      <p className="text-sm text-gray-600">Mon-Sat: 9AM-8PM</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
