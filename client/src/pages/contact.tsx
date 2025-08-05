@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import HeroSection from "@/components/ui/hero-section";
+import InteractiveMap from "@/components/ui/interactive-map";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -66,7 +67,7 @@ export default function Contact() {
     {
       icon: <Phone className="text-white" size={20} />,
       title: "Call Us",
-      content: "Appointment: +91 99562 39488\nFor all inquiries and bookings",
+      content: "Appointment: +91 99562 39488 / +91 54735 80521\nFor all inquiries (8:30 AM to 3:00 PM)",
       color: "bg-soft-teal"
     },
     {
@@ -248,8 +249,7 @@ export default function Contact() {
                             <SelectContent>
                               <SelectItem value="eye-care">Eye Care</SelectItem>
                               <SelectItem value="dental-care">Dental Care</SelectItem>
-                              <SelectItem value="emergency">Emergency Services</SelectItem>
-                              <SelectItem value="consultation">General Consultation</SelectItem>
+                            
                             </SelectContent>
                           </Select>
                           <FormMessage />
@@ -346,6 +346,17 @@ export default function Contact() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Interactive Map */}
+      <section className="py-20" data-testid="map-section">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4" data-testid="map-title">Visit Our Clinic</h2>
+            <p className="text-xl medical-gray" data-testid="map-description">Find us easily with our interactive location map</p>
+          </div>
+          <InteractiveMap className="max-w-4xl mx-auto" />
         </div>
       </section>
     </div>

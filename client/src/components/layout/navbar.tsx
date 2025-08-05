@@ -23,27 +23,27 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50" data-testid="navbar">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3" data-testid="logo-link">
             <img 
               src="/logo-new.png" 
               alt="Swastik Eye & Dental Care Logo"
-              className="w-20 h-20 object-contain"
+              className="w-16 h-16 object-contain"
             />
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Swastik Eye & Dental Care</h1>
-              <p className="text-sm medical-gray">Sahadatapura, Near Roadways, Mau</p>
+              <p className="text-xs medical-gray">Sahadatapura, Near Roadways, Mau</p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-10">
+          <div className="hidden md:flex space-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`px-1 py-4 text-lg font-medium transition-colors ${
+                className={`px-1 py-4 text-sm font-medium transition-colors ${
                   isActive(item.href)
                     ? "medical-blue border-b-2 border-current"
                     : "medical-gray hover:text-blue-600"
@@ -53,7 +53,7 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <a href="tel:+919956239488" className="bg-medical-blue text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md text-lg" data-testid="nav-call-button">
+            <a href="tel:+919956239488" className="bg-medical-blue text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md" data-testid="nav-call-button">
               Call: 99562 39488
             </a>
           </div>

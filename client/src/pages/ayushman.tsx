@@ -10,36 +10,19 @@ export default function Ayushman() {
     "Coverage for all pre-existing conditions from day one",
     "874 medical packages and 1592 procedures covered",
     "No restrictions on family size, gender or age",
-    "Pre-hospitalization expenses up to 3 days covered",
-    "Post-hospitalization follow-up up to 15 days covered",
-    "Coverage across 25+ medical specialties"
+    "Post-hospitalization follow-up up to 15 days covered"
   ];
 
   const coveredServices = [
     {
       category: "Eye Care Services",
       services: [
-        "Comprehensive eye examinations",
         "Cataract surgery with IOL implantation",
+        "Cataract surgery by Phaco Emulsification",
         "Glaucoma treatment and surgery",
         "Retinal treatments and procedures",
-        "Corneal transplantation",
-        "Diabetic retinopathy treatment",
-        "Squint correction surgery",
-        "Ptosis correction"
-      ]
-    },
-    {
-      category: "Dental Care Services", 
-      services: [
-        "Oral and maxillofacial surgery",
-        "Dental implants and prosthetics",
-        "Root canal treatments",
-        "Oral cancer treatment",
-        "Cleft lip and palate surgery",
-        "Jaw reconstruction surgery",
-        "Periodontal surgery",
-        "Emergency dental procedures"
+        "Pterygium surgery",
+        "YAG Laser"
       ]
     }
   ];
@@ -59,7 +42,7 @@ export default function Ayushman() {
     },
     {
       step: "3",
-      title: "Visit Our Clinic",
+      title: "Visit Our Hospital",
       description: "Bring your Ayushman card to Swastik Eye & Dental Care for cashless treatment up to ₹5 lakh coverage.",
       icon: <Heart className="text-white" size={20} />
     }
@@ -70,8 +53,8 @@ export default function Ayushman() {
       {/* Ayushman Hero */}
       <HeroSection
         title="Ayushman Bharat"
-        subtitle="Health Service Available"
-        description="We are proud to be empanelled under Ayushman Bharat PM-JAY scheme, providing cashless health coverage up to ₹5 lakh per family for eligible beneficiaries."
+        subtitle="Eye Care Service Available"
+        description="We are proud to be empanelled under Ayushman Bharat PM-JAY scheme, providing cashless eye care coverage up to ₹5 lakh per family for eligible beneficiaries."
         primaryButtonText="Check Eligibility"
         secondaryButtonText="Call Us"
         secondaryButtonHref="tel:+919956239488"
@@ -94,7 +77,7 @@ export default function Ayushman() {
                 Ayushman Bharat PM-JAY is the world's largest health assurance scheme providing health coverage of ₹5 lakhs per family per year to over 12 crore poor and vulnerable families, covering approximately 55 crore beneficiaries.
               </p>
               <p className="text-lg medical-gray leading-relaxed mb-8">
-                At Swastik Eye & Dental Care, we are proud to be an empanelled provider under this scheme, ensuring that quality eye and dental care is accessible to all eligible families without financial burden.
+                At Swastik Eye & Dental Care, we are proud to be an empanelled provider under this scheme, ensuring that quality eye care is accessible to all eligible families without financial burden.
               </p>
               <a href="tel:+919956239488">
                 <Button className="bg-green-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-green-700 transition-colors shadow-lg" data-testid="ayushman-contact-button">
@@ -145,10 +128,10 @@ export default function Ayushman() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4" data-testid="services-title">
-              Eye & Dental Services Covered
+              Services Covered
             </h2>
             <p className="text-xl medical-gray max-w-3xl mx-auto" data-testid="services-description">
-              Comprehensive coverage for eye and dental treatments under Ayushman Bharat at our clinic
+              Comprehensive coverage for eye treatments under Ayushman Bharat at our clinic
             </p>
           </div>
           
@@ -180,7 +163,7 @@ export default function Ayushman() {
               How to Access Services
             </h2>
             <p className="text-xl medical-gray max-w-3xl mx-auto" data-testid="access-description">
-              Simple steps to avail cashless treatment under Ayushman Bharat at our clinic
+              Simple steps to avail cashless treatment under Ayushman Bharat at our hospital
             </p>
           </div>
           
@@ -213,7 +196,7 @@ export default function Ayushman() {
             Get Quality Healthcare Without Financial Worry
           </h2>
           <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto" data-testid="cta-description">
-            If you are eligible for Ayushman Bharat, visit us for cashless eye and dental treatment up to ₹5 lakh coverage.
+            If you are eligible for Ayushman Bharat, visit us for cashless eye treatment up to ₹5 lakh coverage.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:+919956239488">
@@ -225,7 +208,7 @@ export default function Ayushman() {
             <a href="https://beneficiary.nha.gov.in/" target="_blank" rel="noopener noreferrer">
               <Button 
                 variant="outline" 
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium hover:bg-white hover:text-green-600 transition-colors"
+                className="border-2 border-white text-white bg-transparent px-8 py-4 rounded-lg font-medium hover:bg-white hover:text-green-600 transition-colors"
                 data-testid="cta-eligibility-button"
               >
                 <FileText className="mr-2" size={20} />
