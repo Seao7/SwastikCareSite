@@ -8,24 +8,31 @@ export default function Home() {
   const services = [
     {
       icon: <Eye className="text-white" size={24} />,
-      title: "Comprehensive Eye Care",
-      description: "Complete eye examinations, vision correction, and treatment of eye diseases with cutting-edge technology.",
-      features: ["Eye Examinations", "Cataract Surgery", "Retinal Treatment"],
+      title: "Advanced Eye Care",
+      description: "State-of-the-art eye treatments including Visual Field testing, LASIK surgery, and OCT imaging for comprehensive care.",
+      features: ["Visual Field & Laser", "LASIK Surgery", "OCT Imaging", "Cataract Surgery"],
       iconColor: "bg-medical-blue"
     },
     {
       icon: <svg className="text-white w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>,
       title: "Complete Dental Care",
-      description: "Full-service dental treatments from routine cleanings to advanced cosmetic and restorative procedures.",
-      features: ["General Dentistry", "Cosmetic Dentistry", "Orthodontics"],
+      description: "Full-service dental treatments with in-house optical and medical facilities for comprehensive oral health care.",
+      features: ["General Dentistry", "Cosmetic Dentistry", "Orthodontics", "In-house Optical"],
       iconColor: "bg-soft-teal"
     },
     {
+      icon: <CheckCircle className="text-white" size={24} />,
+      title: "Ayushman Bharat Service",
+      description: "Cashless treatment up to ₹5 lakh under government health scheme for eligible families with quality care.",
+      features: ["₹5 Lakh Coverage", "Cashless Treatment", "All Procedures Covered", "No Pre-conditions"],
+      iconColor: "bg-green-600"
+    },
+    {
       icon: <Ambulance className="text-white" size={24} />,
-      title: "Emergency Services",
-      description: "24/7 emergency care for urgent eye and dental conditions with immediate response and treatment.",
-      features: ["24/7 Availability", "Rapid Response", "Expert Emergency Care"],
-      iconColor: "bg-red-500"
+      title: "Complete Facilities",
+      description: "Modern clinic with parking space, in-house medical facilities, and emergency care for patient convenience.",
+      features: ["Parking Available", "Emergency Care", "In-house Medical", "Modern Equipment"],
+      iconColor: "bg-purple-600"
     }
   ];
 
@@ -83,8 +90,8 @@ export default function Home() {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Modern medical facility interior" 
+                src="https://images.unsplash.com/photo-1609188076864-c35269136352?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                alt="Modern eye examination equipment and dental chair in medical facility" 
                 className="rounded-2xl shadow-2xl w-full h-auto"
                 data-testid="hero-image"
               />
@@ -95,7 +102,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Trusted Care</p>
-                    <p className="text-sm medical-gray">1000+ Happy Patients</p>
+                    <p className="text-sm medical-gray">Expert Eye & Dental Care</p>
                   </div>
                 </div>
               </div>
@@ -114,16 +121,31 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <ServiceCard
-                key={index}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                features={service.features}
-                iconColor={service.iconColor}
-              />
+              <div key={index}>
+                {service.title === "Ayushman Bharat Service" ? (
+                  <Link href="/ayushman">
+                    <div className="cursor-pointer hover:scale-105 transition-transform">
+                      <ServiceCard
+                        icon={service.icon}
+                        title={service.title}
+                        description={service.description}
+                        features={service.features}
+                        iconColor={service.iconColor}
+                      />
+                    </div>
+                  </Link>
+                ) : (
+                  <ServiceCard
+                    icon={service.icon}
+                    title={service.title}
+                    description={service.description}
+                    features={service.features}
+                    iconColor={service.iconColor}
+                  />
+                )}
+              </div>
             ))}
           </div>
         </div>
@@ -135,8 +157,8 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Professional medical team consultation" 
+                src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                alt="Eye examination and dental consultation with modern equipment" 
                 className="rounded-2xl shadow-xl w-full h-auto"
                 data-testid="why-choose-image"
               />

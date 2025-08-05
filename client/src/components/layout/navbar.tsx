@@ -10,6 +10,7 @@ export default function Navbar() {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
+    { name: "Ayushman Service", href: "/ayushman" },
     { name: "Contact Us", href: "/contact" },
   ];
 
@@ -26,9 +27,9 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3" data-testid="logo-link">
             <img 
-              src="/logo.jpeg" 
+              src="/logo.png" 
               alt="Swastik Eye & Dental Care Logo"
-              className="w-10 h-10 rounded-lg object-cover"
+              className="w-12 h-12 object-contain"
             />
             <div>
               <h1 className="text-xl font-bold text-gray-900">Swastik Eye & Dental Care</h1>

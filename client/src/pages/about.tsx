@@ -44,22 +44,28 @@ export default function About() {
 
   const facilities = [
     {
-      icon: <Microscope className="text-white text-sm" />,
-      title: "Advanced Diagnostic Equipment",
-      description: "Latest imaging technology for precise diagnosis and treatment planning.",
+      icon: <Eye className="text-white text-sm" />,
+      title: "Advanced Eye Technology",
+      description: "Visual Field testing, LASIK surgery, and OCT imaging for comprehensive eye care diagnosis and treatment.",
       color: "bg-medical-blue"
     },
     {
       icon: <Stethoscope className="text-white text-sm" />,
-      title: "Modern Operation Theaters",
-      description: "Sterile, well-equipped surgical suites for various procedures.",
+      title: "In-house Medical & Optical",
+      description: "Complete medical facilities with in-house optical services for prescriptions and eye wear.",
       color: "bg-soft-teal"
     },
     {
       icon: <Sofa className="text-white text-sm" />,
-      title: "Comfortable Patient Areas",
-      description: "Welcoming waiting areas and comfortable treatment rooms.",
+      title: "Patient Convenience",
+      description: "Ample parking space, comfortable waiting areas, and modern treatment rooms for patient comfort.",
       color: "bg-calm-green"
+    },
+    {
+      icon: <CheckCircle className="text-white text-sm" />,
+      title: "Ayushman Bharat Empanelled",
+      description: "Government authorized center for cashless treatment up to ₹5 lakh under Ayushman Bharat scheme.",
+      color: "bg-green-600"
     }
   ];
 

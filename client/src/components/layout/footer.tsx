@@ -10,9 +10,9 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
               <img 
-                src="/logo.jpeg" 
+                src="/logo.png" 
                 alt="Swastik Eye & Dental Care Logo"
-                className="w-10 h-10 rounded-lg object-cover"
+                className="w-12 h-12 object-contain"
               />
               <div>
                 <h3 className="text-xl font-bold">Swastik Eye & Dental Care</h3>
@@ -20,7 +20,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
-              Expert eye and dental care services by qualified professionals. Dr. R.N. Agrawal (MS KGMU) and Dr. Ruchi Agrawal (BDS Lucknow) providing comprehensive healthcare for your family.
+              Expert eye and dental care with advanced facilities including Visual Field Laser, LASIK, OCT imaging, in-house optical, parking space, and Ayushman Bharat cashless service available.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-medical-blue transition-colors" data-testid="social-facebook">
@@ -44,9 +44,9 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><Link href="/" className="text-gray-300 hover:text-white transition-colors">Home</Link></li>
               <li><Link href="/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Services</a></li>
+              <li><Link href="/ayushman" className="text-gray-300 hover:text-white transition-colors">Ayushman Service</Link></li>
               <li><Link href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Appointments</a></li>
+              <li><a href="tel:+919956239488" className="text-gray-300 hover:text-white transition-colors">Book Appointment</a></li>
             </ul>
           </div>
 
