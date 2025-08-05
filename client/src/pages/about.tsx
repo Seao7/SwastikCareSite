@@ -7,8 +7,8 @@ export default function About() {
   const teamMembers = [
     {
       name: "Dr. R.N. Agrawal",
-      role: "Eye Surgeon (MS KGMU)",
-      description: "Expert eye surgeon with MS qualification from King George's Medical University, providing comprehensive eye care and surgical procedures.",
+      role: "Eye Specialist (MS KGMU)",
+      description: "Expert eye surgeon with MS qualification from King George's Medical University, Fellowship in Anterior Segment Surgery from Shree Rann Ambika Eye Hospital, Bhairahava, Nepal and Phaco Fellowship from Sankara Nethralaya, Chennai.",
       imageUrl: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
       roleColor: "medical-blue"
     },
