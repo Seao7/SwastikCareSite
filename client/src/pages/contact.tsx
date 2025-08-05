@@ -36,13 +36,13 @@ export default function Contact() {
     mutationFn: async (data: InsertContact) => {
       // Use Web3Forms for form submission
       const formData = new FormData();
-      formData.append('access_key', 'YOUR_WEB3FORMS_ACCESS_KEY'); // Get from web3forms.com
-      formData.append('name', `${data.firstName} ${data.lastName}`);
-      formData.append('email', data.email);
-      formData.append('phone', data.phone);
-      formData.append('service', data.serviceInterest);
-      formData.append('message', data.message);
-      formData.append('subject', `New Contact Form - ${data.firstName} ${data.lastName}`);
+      formData.append('access_key', 'a1abad7f-135a-4f8f-86d0-cf13e3fc5e62');
+      formData.append('name', `${data.firstName || ''} ${data.lastName || ''}`);
+      formData.append('email', data.email || '');
+      formData.append('phone', data.phone || '');
+      formData.append('service', data.serviceInterest || '');
+      formData.append('message', data.message || '');
+      formData.append('subject', `New Contact Form - ${data.firstName || ''} ${data.lastName || ''}`);
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -160,13 +160,7 @@ export default function Contact() {
               </div>
               
               {/* Map Placeholder */}
-              <div className="bg-gray-200 rounded-2xl h-64 flex items-center justify-center" data-testid="map-placeholder">
-                <div className="text-center medical-gray">
-                  <MapPin size={48} className="mx-auto mb-4" />
-                  <p className="font-medium">Interactive Map</p>
-                  <p className="text-sm">Location map will be integrated here</p>
-                </div>
-              </div>
+
             </div>
             
             {/* Contact Form */}
@@ -379,7 +373,7 @@ export default function Contact() {
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
               <div className="relative">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.123456789!2d83.5617892!3d25.9520734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDU3JzA3LjUiTiA4M8KwMzMnNDIuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3599.123456789!2d83.5617892!3d25.9520734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e31f7c7b1234%3A0x1234567890abcdef!2sMau%2C%20Uttar%20Pradesh%20275101%2C%20India!5e0!3m2!1sen!2sin!4v1707123456789!5m2!1sen!2sin"
                   width="100%" 
                   height="400" 
                   style={{ border: 0 }}
