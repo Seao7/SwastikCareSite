@@ -53,7 +53,7 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <a href="tel:+919956239488" className="bg-medical-blue text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-md" data-testid="nav-call-button">
+            <a href="tel:+919956239488" className="bg-medical-blue text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-md flex items-center" data-testid="nav-call-button">
               Call: +91 99562 39488
             </a>
           </div>

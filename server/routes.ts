@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
 import { z } from "zod";
 import * as nodemailer from "nodemailer";
+import sgMail from "@sendgrid/mail";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission endpoint
@@ -12,7 +13,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = insertContactSchema.parse(req.body);
       const contact = await storage.createContact(validatedData);
       
-      // Send email notification
+      // Send email notification using SendGrid or Gmail
       try {
         const transporter = nodemailer.createTransport({
           service: 'gmail',
