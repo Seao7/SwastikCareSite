@@ -82,7 +82,7 @@ export default function Ayushman() {
               <a href="tel:+919956239488">
                 <Button className="bg-green-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-green-700 transition-colors shadow-lg" data-testid="ayushman-contact-button">
                   <Phone className="mr-2" size={20} />
-                  Call for Assistance: 99562 39488
+                  Call for Assistance: +91 99562 39488
                 </Button>
               </a>
             </div>
@@ -202,7 +202,7 @@ export default function Ayushman() {
             <a href="tel:+919956239488">
               <Button className="bg-white text-green-600 px-8 py-4 rounded-lg font-medium hover:bg-gray-100 transition-colors shadow-lg" data-testid="cta-call-button">
                 <Phone className="mr-2" size={20} />
-                Call: 99562 39488
+                Call: +91 99562 39488
               </Button>
             </a>
             <a href="https://beneficiary.nha.gov.in/" target="_blank" rel="noopener noreferrer">
