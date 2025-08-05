@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import HeroSection from "@/components/ui/hero-section";
@@ -11,13 +12,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
 import { MapPin, Phone, Mail, Clock, TriangleAlert, Calendar, MessageCircle } from "lucide-react";
-import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const queryClient = useQueryClient();
 
   const form = useForm<InsertContact>({
     resolver: zodResolver(insertContactSchema),
@@ -31,43 +32,29 @@ export default function Contact() {
     },
   });
 
-  const onSubmit = async (data: InsertContact) => {
-    setIsSubmitting(true);
-    
-    try {
-      // EmailJS configuration - you'll need to replace these with your actual values
-      const templateParams = {
-        from_name: `${data.firstName} ${data.lastName}`,
-        from_email: data.email,
-        phone: data.phone,
-        service_interest: data.serviceInterest,
-        message: data.message,
-        to_email: 'sedcmau@gmail.com',
-      };
-
-      // Send email using EmailJS
-      await emailjs.send(
-        'YOUR_SERVICE_ID',    // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID',   // Replace with your EmailJS template ID  
-        templateParams,
-        'YOUR_PUBLIC_KEY'     // Replace with your EmailJS public key
-      );
-
+  const contactMutation = useMutation({
+    mutationFn: async (data: InsertContact) => {
+      return apiRequest("POST", "/api/contacts", data);
+    },
+    onSuccess: () => {
       toast({
         title: "Message sent successfully!",
-        description: "We'll get back to you within 24 hours.",
+        description: "We will get back to you soon.",
       });
       form.reset();
-    } catch (error) {
-      console.error('EmailJS Error:', error);
+      queryClient.invalidateQueries({ queryKey: ["/api/contacts"] });
+    },
+    onError: (error: Error) => {
       toast({
-        title: "Failed to send message",
-        description: "Please try again or call us directly at +91 99562 39488.",
+        title: "Error sending message",
+        description: error.message,
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
-    }
+    },
+  });
+
+  const onSubmit = (data: InsertContact) => {
+    contactMutation.mutate(data);
   };
 
   const contactInfo = [
@@ -85,34 +72,36 @@ export default function Contact() {
     },
     {
       icon: <Mail className="text-white" size={20} />,
-      title: "Email Us",
-      content: "sedcmau@gmail.com\nDirect email contact",
+      title: "Book your Appointment at",
+      content: "Call: 99562 39488\nDirect appointment booking",
       color: "bg-calm-green"
     },
     {
       icon: <Clock className="text-white" size={20} />,
-      title: "Working Hours",
-      content: "Monday - Saturday: 8:30 AM to 3:00 PM\nSunday: Closed\nEmergency: 24/7",
-      color: "bg-orange-500"
+      title: "Our Specialists",
+      content: "Dr. R.N. Agrawal - Eye Surgeon (MS KGMU)\nDr. Ruchi Agrawal - Dentist (BDS)\nDr. Rahul - Retina Specialist\nDr. Priyanka - Orthodontist",
+      color: "bg-purple-500"
     }
   ];
 
   const quickActions = [
     {
-      icon: <Phone className="text-white" size={24} />,
-      title: "Emergency Call",
-      description: "Need immediate assistance? Call us directly for urgent medical concerns or emergency appointments.",
-      buttonText: "Call Now: +91 99562 39488",
-      action: "tel:+919956239488",
-      color: "bg-red-500"
+      icon: <Calendar className="text-white" size={24} />,
+      title: "Book Appointment",
+      description: "Schedule your consultation at your convenient time.",
+      buttonText: "Call: 99562 39488",
+      color: "bg-medical-blue",
+      borderColor: "border-blue-100",
+      action: "tel:+919956239488"
     },
     {
       icon: <MessageCircle className="text-white" size={24} />,
-      title: "Send Message",
-      description: "Have questions about our services? Send us a detailed message and we'll respond within 24 hours.",
-      buttonText: "Fill Contact Form",
-      action: "#contact-form",
-      color: "bg-medical-blue"
+      title: "General Inquiry",
+      description: "Have questions about our services or need information?",
+      buttonText: "Send Message",
+      color: "bg-soft-teal",
+      borderColor: "border-cyan-100",
+      action: "scroll-to-form"
     }
   ];
 
@@ -120,262 +109,198 @@ export default function Contact() {
     <div data-testid="contact-page">
       {/* Contact Hero */}
       <HeroSection
-        title="Contact Us"
-        subtitle="Get in Touch with Our Medical Team"
-        description="We're here to provide you with the best eye and dental care. Reach out to us for appointments, consultations, or any questions about our services."
-        primaryButtonText="Call Now"
-        primaryButtonHref="tel:+919956239488"
-        secondaryButtonText="Send Message"
-        secondaryButtonHref="#contact-form"
-        showButtons={true}
-        backgroundGradient="from-medical-blue to-soft-teal"
+        title="Get in Touch"
+        subtitle=""
+        description="We're here to help with all your eye and dental care needs. Reach out to us for appointments, inquiries, or emergency services."
+        primaryButtonText="Book Appointment"
+        showButtons={false}
+        backgroundGradient="from-blue-50 to-white"
       />
 
-      {/* Contact Information Cards */}
-      <section className="py-20 bg-gray-50" data-testid="contact-info-section">
+      {/* Contact Information & Form */}
+      <section className="py-20" data-testid="contact-form-section" id="contact-form-section">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4" data-testid="contact-info-title">Get in Touch</h2>
-            <p className="text-xl medical-gray max-w-3xl mx-auto" data-testid="contact-info-description">
-              Multiple ways to reach us for your convenience. Choose the option that works best for you.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {contactInfo.map((info, index) => (
-              <Card key={index} className="bg-white rounded-2xl shadow-lg text-center border-0" data-testid={`contact-info-${index}`}>
-                <CardContent className="p-8">
-                  <div className={`w-16 h-16 ${info.color} rounded-xl flex items-center justify-center mx-auto mb-6`}>
-                    {info.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">{info.title}</h3>
-                  <p className="medical-gray whitespace-pre-line text-sm leading-relaxed">{info.content}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form */}
-      <section id="contact-form-section" className="py-20" data-testid="contact-form-section">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Form */}
-            <div>
-              <div className="mb-8">
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4" data-testid="contact-form-title">Send Us a Message</h2>
-                <p className="text-xl medical-gray" data-testid="contact-form-description">
-                  Fill out the form below and we'll get back to you as soon as possible.
-                </p>
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Contact Information */}
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-8" data-testid="contact-info-title">Contact Information</h2>
               </div>
               
-              <Card className="bg-white rounded-2xl shadow-xl border-0">
-                <CardContent className="p-8">
-                  <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" data-testid="contact-form">
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <FormField
-                          control={form.control}
-                          name="firstName"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-gray-700 font-medium">First Name *</FormLabel>
-                              <FormControl>
-                                <Input 
-                                  placeholder="Enter your first name" 
-                                  className="border-gray-300 focus:border-medical-blue"
-                                  data-testid="input-first-name"
-                                  {...field} 
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        
-                        <FormField
-                          control={form.control}
-                          name="lastName"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-gray-700 font-medium">Last Name *</FormLabel>
-                              <FormControl>
-                                <Input 
-                                  placeholder="Enter your last name" 
-                                  className="border-gray-300 focus:border-medical-blue"
-                                  data-testid="input-last-name"
-                                  {...field} 
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-                      
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">Email Address *</FormLabel>
-                            <FormControl>
-                              <Input 
-                                type="email" 
-                                placeholder="your.email@example.com" 
-                                className="border-gray-300 focus:border-medical-blue"
-                                data-testid="input-email"
-                                {...field} 
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">Phone Number *</FormLabel>
-                            <FormControl>
-                              <Input 
-                                type="tel" 
-                                placeholder="+91 99999 99999" 
-                                className="border-gray-300 focus:border-medical-blue"
-                                data-testid="input-phone"
-                                {...field} 
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={form.control}
-                        name="serviceInterest"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">Service Interest *</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
-                              <FormControl>
-                                <SelectTrigger className="border-gray-300 focus:border-medical-blue" data-testid="select-service">
-                                  <SelectValue placeholder="Select the service you're interested in" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                <SelectItem value="eye-care">Eye Care</SelectItem>
-                                <SelectItem value="dental-care">Dental Care</SelectItem>
-                                <SelectItem value="eye-surgery">Eye Surgery</SelectItem>
-                                <SelectItem value="consultation">General Consultation</SelectItem>
-                                <SelectItem value="ayushman-bharat">Ayushman Bharat Service</SelectItem>
-                                <SelectItem value="emergency">Emergency Care</SelectItem>
-                                <SelectItem value="other">Other</SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={form.control}
-                        name="message"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">Message *</FormLabel>
-                            <FormControl>
-                              <Textarea 
-                                placeholder="Please describe your concern or question in detail..." 
-                                className="border-gray-300 focus:border-medical-blue min-h-[120px]"
-                                data-testid="textarea-message"
-                                {...field} 
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <div className="flex items-start space-x-3">
-                        <Checkbox 
-                          required 
-                          className="mt-1" 
-                          data-testid="checkbox-privacy-policy"
-                        />
-                        <label className="text-sm medical-gray">
-                          I agree to the <a href="#" className="medical-blue hover:underline">Privacy Policy</a> and consent to being contacted regarding my inquiry. *
-                        </label>
-                      </div>
-                      
-                      <Button 
-                        type="submit" 
-                        className="w-full bg-medical-blue text-white py-4 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg"
-                        disabled={isSubmitting}
-                        data-testid="button-submit-message"
-                      >
-                        <Mail className="mr-2" size={20} />
-                        {isSubmitting ? "Sending..." : "Send Message"}
-                      </Button>
-                    </form>
-                  </Form>
-                </CardContent>
-              </Card>
-            </div>
-            
-            {/* Contact Information */}
-            <div>
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Why Choose Us?</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-medical-blue rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <TriangleAlert className="text-white" size={16} />
+              <div className="space-y-6">
+                {contactInfo.map((info, index) => (
+                  <div key={index} className="flex items-start space-x-4" data-testid={`contact-info-${index}`}>
+                    <div className={`w-12 h-12 ${info.color} rounded-xl flex items-center justify-center flex-shrink-0`}>
+                      {info.icon}
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Expert Medical Care</h4>
-                      <p className="text-sm medical-gray">Experienced doctors with specialized training in eye and dental care.</p>
+                      <h4 className="font-semibold text-gray-900 mb-2">{info.title}</h4>
+                      <p className="medical-gray whitespace-pre-line">{info.content}</p>
                     </div>
                   </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-soft-teal rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <Calendar className="text-white" size={16} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Flexible Appointments</h4>
-                      <p className="text-sm medical-gray">Convenient scheduling options to fit your busy lifestyle.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-calm-green rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <Phone className="text-white" size={16} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">24/7 Emergency Support</h4>
-                      <p className="text-sm medical-gray">Round-the-clock availability for urgent medical concerns.</p>
-                    </div>
-                  </div>
+                ))}
+              </div>
+              
+              {/* Map Placeholder */}
+              <div className="bg-gray-200 rounded-2xl h-64 flex items-center justify-center" data-testid="map-placeholder">
+                <div className="text-center medical-gray">
+                  <MapPin size={48} className="mx-auto mb-4" />
+                  <p className="font-medium">Interactive Map</p>
+                  <p className="text-sm">Location map will be integrated here</p>
                 </div>
               </div>
-              
-              <Card className="bg-gradient-to-r from-medical-blue to-soft-teal text-white rounded-2xl border-0">
-                <CardContent className="p-8 text-center">
-                  <Phone className="w-12 h-12 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-2">Need Immediate Help?</h3>
-                  <p className="mb-6 opacity-90">Call us directly for urgent medical assistance</p>
-                  <a href="tel:+919956239488">
-                    <Button className="bg-white text-medical-blue px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors" data-testid="emergency-call-button">
-                      Call: +91 99562 39488
-                    </Button>
-                  </a>
-                </CardContent>
-              </Card>
             </div>
+            
+            {/* Contact Form */}
+            <Card className="bg-white rounded-2xl shadow-lg border" data-testid="contact-form-card">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6" data-testid="contact-form-title">Send us a Message</h3>
+                
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <FormField
+                        control={form.control}
+                        name="firstName"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>First Name *</FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder="Enter your first name" 
+                                {...field} 
+                                data-testid="input-first-name"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="lastName"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Last Name *</FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder="Enter your last name" 
+                                {...field} 
+                                data-testid="input-last-name"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email Address *</FormLabel>
+                          <FormControl>
+                            <Input 
+                              type="email" 
+                              placeholder="Enter your email address" 
+                              {...field} 
+                              data-testid="input-email"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Phone Number</FormLabel>
+                          <FormControl>
+                            <Input 
+                              type="tel" 
+                              placeholder="Enter your phone number" 
+                              {...field} 
+                              value={field.value || ""}
+                              data-testid="input-phone"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="serviceInterest"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Service Interest</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value || ""}>
+                            <FormControl>
+                              <SelectTrigger data-testid="select-service-interest">
+                                <SelectValue placeholder="Select a service" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="eye-care">Eye Care</SelectItem>
+                              <SelectItem value="dental-care">Dental Care</SelectItem>
+                            
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Message *</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              rows={4} 
+                              placeholder="Tell us how we can help you..." 
+                              className="resize-none" 
+                              {...field} 
+                              data-testid="textarea-message"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <div className="flex items-start space-x-3">
+                      <Checkbox 
+                        required 
+                        className="mt-1" 
+                        data-testid="checkbox-privacy-policy"
+                      />
+                      <label className="text-sm medical-gray">
+                        I agree to the <a href="#" className="medical-blue hover:underline">Privacy Policy</a> and consent to being contacted regarding my inquiry. *
+                      </label>
+                    </div>
+                    
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-medical-blue text-white py-4 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg"
+                      disabled={contactMutation.isPending}
+                      data-testid="button-submit-message"
+                    >
+                      <Mail className="mr-2" size={20} />
+                      {contactMutation.isPending ? "Sending..." : "Send Message"}
+                    </Button>
+                  </form>
+                </Form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -390,7 +315,7 @@ export default function Contact() {
           
           <div className="grid md:grid-cols-2 gap-8">
             {quickActions.map((action, index) => (
-              <Card key={index} className="bg-white rounded-2xl shadow-lg text-center border-0" data-testid={`quick-action-${index}`}>
+              <Card key={index} className={`bg-white rounded-2xl shadow-lg text-center border-2 ${action.borderColor}`} data-testid={`quick-action-${index}`}>
                 <CardContent className="p-8">
                   <div className={`w-16 h-16 ${action.color} rounded-xl flex items-center justify-center mx-auto mb-6`}>
                     {action.icon}
