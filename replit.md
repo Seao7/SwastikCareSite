@@ -1,6 +1,6 @@
 # Overview
 
-This is a full-stack healthcare website for "Swastik Eye & Dental Care" built with React frontend and Express.js backend. The application provides a professional medical practice website located at Roadways, Sahadatpura, Mau - 275101, Uttar Pradesh, India. It features real clinic information including actual doctors (Dr. R.N. Agrawal - Eye Surgeon MS KGMU, Dr. Ruchi Agrawal - Dentist BDS, Dr. Rahul - Retina Specialist, Dr. Priyanka Tripathi - Orthodontist) and appointment contact number (99562 39488). The website includes contact forms, service information, team details, and direct calling functionality with a modern UI using shadcn/ui components and medical-themed design system.
+This is a frontend healthcare website for "Swastik Eye & Dental Care" built with React and minimal Express.js server for static serving. The application provides a professional medical practice website located at Roadways, Sahadatpura, Mau - 275101, Uttar Pradesh, India. It features real clinic information including actual doctors (Dr. R.N. Agrawal - Eye Surgeon MS KGMU, Dr. Ruchi Agrawal - Dentist BDS, Dr. Rahul - Retina Specialist) and appointment contact number (+91 99562 39488). The website includes Web3Forms contact integration, service information, team details, Google Maps embed, and direct calling functionality with a modern UI using shadcn/ui components and medical-themed design system.
 
 # User Preferences
 
@@ -23,21 +23,15 @@ Preferred communication style: Simple, everyday language.
 - **Build Tool**: Vite for fast development and optimized production builds
 
 ## Backend Architecture
-- **Framework**: Express.js with TypeScript for API endpoints and server-side logic
-- **Database**: PostgreSQL with Drizzle ORM for type-safe database operations and schema management
-- **Storage Strategy**: In-memory storage implementation (MemStorage) for development with interface for easy database switching
-- **API Design**: RESTful endpoints for contact form submissions with proper validation and error handling
-- **Development Setup**: Integrated Vite development server with hot module replacement and middleware integration
-
-## Database Schema
-- **Contacts Table**: Stores contact form submissions with fields for personal information (firstName, lastName, email, phone), service interest, message, and timestamps
-- **Validation**: Zod schemas for runtime type checking and form validation with Drizzle integration
-- **Migration System**: Drizzle-kit for database migrations and schema synchronization
+- **Framework**: Minimal Express.js with TypeScript for static file serving and development
+- **Database**: None required - using Web3Forms for contact form submissions
+- **Development Setup**: Integrated Vite development server with hot module replacement
 
 ## Form Handling & Validation
+- **Contact Form**: Web3Forms integration with access key a1abad7f-135a-4f8f-86d0-cf13e3fc5e62
 - **Client-side**: React Hook Form with Zod resolver for form state management and validation
-- **Server-side**: Express middleware for JSON parsing and Zod validation for data integrity
-- **User Feedback**: Toast notifications for success/error states and comprehensive error handling
+- **Email Delivery**: Messages sent directly to sedcmau@gmail.com via Web3Forms
+- **User Feedback**: Toast notifications for success/error states with fallback contact information
 
 # External Dependencies
 
@@ -51,10 +45,10 @@ Preferred communication style: Simple, everyday language.
 - **TypeScript**: Type safety across the entire codebase with shared types
 - **ESBuild**: Fast bundling for production builds
 
-## Database & ORM
-- **Drizzle ORM**: Type-safe PostgreSQL ORM with schema definition and query building
-- **@neondatabase/serverless**: Serverless PostgreSQL driver for database connections
-- **Drizzle-kit**: CLI tool for database migrations and schema management
+## Contact & Communication
+- **Web3Forms**: External service for contact form submissions (1,000 free submissions/month)
+- **Google Maps**: Embedded map showing clinic location in Mau, Uttar Pradesh
+- **Direct Contact**: Phone and email links for immediate communication
 
 ## State Management & HTTP
 - **TanStack Query**: Server state management with caching, background updates, and error handling
