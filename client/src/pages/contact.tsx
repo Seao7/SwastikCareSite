@@ -34,26 +34,37 @@ export default function Contact() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContact) => {
-      // Use Web3Forms for form submission
-      const formData = new FormData();
-      formData.append('access_key', 'a1abad7f-135a-4f8f-86d0-cf13e3fc5e62');
-      formData.append('name', `${data.firstName || ''} ${data.lastName || ''}`);
-      formData.append('email', data.email || '');
-      formData.append('phone', data.phone || '');
-      formData.append('service', data.serviceInterest || '');
-      formData.append('message', data.message || '');
-      formData.append('subject', `New Contact Form - ${data.firstName || ''} ${data.lastName || ''}`);
+      // Create a hidden form and submit it to Web3Forms
+      const form = document.createElement('form');
+      form.action = 'https://api.web3forms.com/submit';
+      form.method = 'POST';
+      form.style.display = 'none';
 
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
+      // Add form fields
+      const fields = {
+        access_key: 'a1abad7f-135a-4f8f-86d0-cf13e3fc5e62',
+        name: `${data.firstName || ''} ${data.lastName || ''}`.trim(),
+        email: data.email || '',
+        phone: data.phone || '',
+        service: data.serviceInterest || '',
+        message: data.message || '',
+        subject: `New Contact Form - ${data.firstName || ''} ${data.lastName || ''}`.trim(),
+        redirect: window.location.href
+      };
+
+      Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
 
-      return response.json();
+      return { success: true };
     },
     onSuccess: () => {
       toast({
@@ -373,7 +384,7 @@ export default function Contact() {
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
               <div className="relative">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3599.123456789!2d83.5617892!3d25.9520734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e31f7c7b1234%3A0x1234567890abcdef!2sMau%2C%20Uttar%20Pradesh%20275101%2C%20India!5e0!3m2!1sen!2sin!4v1707123456789!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3587.9390383679843!2d83.56567591186405!3d25.937226377147088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39918af2554d9d79%3A0x1b232b4d0b1d0d3f!2sSwastik%20Eye%20and%20Dental%20Care!5e0!3m2!1sen!2sin!4v1754421121354!5m2!1sen!2sin"
                   width="100%" 
                   height="400" 
                   style={{ border: 0 }}
@@ -384,18 +395,8 @@ export default function Contact() {
                   className="w-full"
                   data-testid="google-maps-embed"
                 />
-                <div className="absolute top-4 left-4 bg-white rounded-lg p-4 shadow-lg">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-medical-blue rounded-lg flex items-center justify-center">
-                      <MapPin className="text-white" size={20} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Swastik Eye & Dental Care</h4>
-                      <p className="text-sm text-gray-600">Sahadatapura, Near Roadways</p>
-                      <p className="text-sm text-gray-600">Mau - 275101, UP</p>
-                    </div>
-                  </div>
-                </div>
+  
+                
               </div>
               
               <div className="p-6 bg-gray-50">
