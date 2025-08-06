@@ -1,7 +1,7 @@
 import HeroSection from "@/components/ui/hero-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Check, Shield, Heart, Users, CreditCard, Phone, FileText, Star } from "lucide-react";
+import { Check, Shield, Heart, Users, CreditCard, Phone, FileText, Star, Eye } from "lucide-react";
 
 export default function Ayushman() {
   const benefits = [
@@ -43,7 +43,7 @@ export default function Ayushman() {
     {
       step: "3",
       title: "Visit Our Hospital",
-      description: "Bring your Ayushman card to Swastik Eye & Dental Care for cashless treatment up to ₹5 lakh coverage.",
+      description: "Bring your Ayushman card to Swastik Eye & Dental Care for cashless eye treatment up to ₹5 lakh coverage.",
       icon: <Heart className="text-white" size={20} />
     }
   ];
@@ -52,23 +52,23 @@ export default function Ayushman() {
     <div data-testid="ayushman-page">
       {/* Ayushman Hero */}
       <HeroSection
-        title="Ayushman Bharat"
-        subtitle="Eye Care Service Available"
-        description="We are proud to be empanelled under Ayushman Bharat PM-JAY scheme, providing cashless eye care coverage up to ₹5 lakh per family for eligible beneficiaries."
-        primaryButtonText="Check Eligibility"
-        secondaryButtonText="Call Us"
-        secondaryButtonHref="tel:+919956239488"
-        showButtons={true}
-        backgroundGradient="from-green-50 to-white"
-      />
-
+      title="Ayushman Bharat"
+      subtitle="Eye Care Service Available"
+      description="We are proud to be empanelled under Ayushman Bharat PM-JAY scheme, providing cashless eye care coverage up to ₹5 lakh per family for eligible beneficiaries."
+      primaryButtonText="Check Eligibility"
+      primaryButtonHref="https://beneficiary.nha.gov.in/"
+      secondaryButtonText="Call Us"
+      secondaryButtonHref="tel:+919956239488"
+      showButtons={true}
+      backgroundGradient="from-green-50 to-white"
+    />
       {/* What is Ayushman Bharat */}
       <section className="py-20" data-testid="ayushman-about-section">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mb-6">
-                <Shield className="text-white" size={24} />
+                <Eye className="text-white" size={24} />
               </div>
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6" data-testid="ayushman-about-title">
                 World's Largest Health Insurance Scheme
@@ -76,8 +76,13 @@ export default function Ayushman() {
               <p className="text-lg medical-gray leading-relaxed mb-6" data-testid="ayushman-about-description">
                 Ayushman Bharat PM-JAY is the world's largest health assurance scheme providing health coverage of ₹5 lakhs per family per year to over 12 crore poor and vulnerable families, covering approximately 55 crore beneficiaries.
               </p>
+              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+                <p className="text-blue-700 font-semibold">
+                  Important: At Swastik Eye & Dental Care, Ayushman Bharat coverage is available exclusively for Eye treatments. Dental services are not covered under this scheme.
+                </p>
+              </div>
               <p className="text-lg medical-gray leading-relaxed mb-8">
-                At Swastik Eye & Dental Care, we are proud to be an empanelled provider under this scheme, ensuring that quality eye care is accessible to all eligible families without financial burden.
+                We are proud to be an empanelled provider under this scheme, ensuring that quality eye care is accessible to all eligible families without financial burden.
               </p>
               <a href="tel:+919956239488">
                 <Button className="bg-green-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-green-700 transition-colors shadow-lg" data-testid="ayushman-contact-button">
@@ -123,34 +128,42 @@ export default function Ayushman() {
         </div>
       </section>
 
-      {/* Covered Services */}
+      {/* Covered Services - Centered */}
       <section className="py-20" data-testid="covered-services-section">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4" data-testid="services-title">
-              Services Covered
+              Eye Care Services Covered
             </h2>
             <p className="text-xl medical-gray max-w-3xl mx-auto" data-testid="services-description">
               Comprehensive coverage for eye treatments under Ayushman Bharat at our clinic
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
-            {coveredServices.map((category, index) => (
-              <Card key={index} className="bg-white rounded-2xl shadow-lg" data-testid={`service-category-${index}`}>
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">{category.category}</h3>
-                  <ul className="space-y-3">
-                    {category.services.map((service, serviceIndex) => (
-                      <li key={serviceIndex} className="flex items-start space-x-3" data-testid={`service-${index}-${serviceIndex}`}>
-                        <Check className="text-green-600 mt-1 flex-shrink-0" size={16} />
-                        <span className="medical-gray">{service}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="flex justify-center">
+            <div className="max-w-2xl">
+              {coveredServices.map((category, index) => (
+                <Card key={index} className="bg-white rounded-2xl shadow-lg" data-testid={`service-category-${index}`}>
+                  <CardContent className="p-8">
+                    <div className="text-center mb-6">
+                      <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Eye className="text-white" size={24} />
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900">{category.category}</h3>
+                      <p className="text-sm text-gray-500 mt-2">Available under Ayushman Bharat scheme</p>
+                    </div>
+                    <ul className="space-y-3">
+                      {category.services.map((service, serviceIndex) => (
+                        <li key={serviceIndex} className="flex items-start space-x-3" data-testid={`service-${index}-${serviceIndex}`}>
+                          <Check className="text-green-600 mt-1 flex-shrink-0" size={16} />
+                          <span className="medical-gray">{service}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -160,10 +173,10 @@ export default function Ayushman() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4" data-testid="access-title">
-              How to Access Services
+              How to Access Eye Care Services
             </h2>
             <p className="text-xl medical-gray max-w-3xl mx-auto" data-testid="access-description">
-              Simple steps to avail cashless treatment under Ayushman Bharat at our hospital
+              Simple steps to avail cashless eye treatment under Ayushman Bharat at our hospital
             </p>
           </div>
           
@@ -190,13 +203,13 @@ export default function Ayushman() {
       <section className="py-20 bg-green-600" data-testid="ayushman-cta-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-            <Star className="text-green-600" size={24} />
+            <Eye className="text-green-600" size={24} />
           </div>
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6" data-testid="cta-title">
-            Get Quality Healthcare Without Financial Worry
+            Get Quality Eye Care Without Financial Worry
           </h2>
           <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto" data-testid="cta-description">
-            If you are eligible for Ayushman Bharat, visit us for cashless eye treatment up to ₹5 lakh coverage.
+            If you are eligible for Ayushman Bharat, visit us for cashless eye treatment up to ₹5 lakh coverage. 
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:+919956239488">

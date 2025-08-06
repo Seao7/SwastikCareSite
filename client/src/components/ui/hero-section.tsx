@@ -8,6 +8,7 @@ interface HeroSectionProps {
   description: string;
   primaryButtonText: string;
   primaryButtonAction?: () => void;
+  primaryButtonHref?: string; // Add this line
   secondaryButtonText?: string;
   secondaryButtonHref?: string;
   showButtons?: boolean;
@@ -20,6 +21,7 @@ export default function HeroSection({
   description,
   primaryButtonText,
   primaryButtonAction,
+  primaryButtonHref, // Add this parameter
   secondaryButtonText,
   secondaryButtonHref,
   showButtons = true,
@@ -39,14 +41,27 @@ export default function HeroSection({
           
           {showButtons && (
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                className="bg-medical-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg"
-                onClick={primaryButtonAction}
-                data-testid="hero-primary-button"
-              >
-                <Calendar className="mr-2" size={20} />
-                {primaryButtonText}
-              </Button>
+              {/* Updated primary button to handle both href and action */}
+              {primaryButtonHref ? (
+                <a href={primaryButtonHref} target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    className="bg-medical-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg"
+                    data-testid="hero-primary-button"
+                  >
+                    <Calendar className="mr-2" size={20} />
+                    {primaryButtonText}
+                  </Button>
+                </a>
+              ) : (
+                <Button 
+                  className="bg-medical-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg"
+                  onClick={primaryButtonAction}
+                  data-testid="hero-primary-button"
+                >
+                  <Calendar className="mr-2" size={20} />
+                  {primaryButtonText}
+                </Button>
+              )}
               
               {secondaryButtonText && secondaryButtonHref && (
                 <Link href={secondaryButtonHref}>
