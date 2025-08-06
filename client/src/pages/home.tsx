@@ -78,7 +78,7 @@ export default function Home() {
                 <a href="tel:+919956239488">
                   <Button className="bg-medical-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg" data-testid="book-appointment-button">
                     <Calendar className="mr-2" size={20} />
-                    Call: 99562 39488
+                    Call: +91 99562 39488
                   </Button>
                 </a>
                 <Link href="/contact">
@@ -104,17 +104,7 @@ export default function Home() {
                 className="rounded-2xl shadow-2xl w-full h-96"
                 testId="hero-image-carousel"
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg border">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-calm-green rounded-full flex items-center justify-center">
-                    <CheckCircle className="text-white" size={20} />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Trusted Care</p>
-                    <p className="text-sm medical-gray">Expert Eye & Dental Care</p>
-                  </div>
-                </div>
-              </div>
+             
             </div>
           </div>
         </div>
