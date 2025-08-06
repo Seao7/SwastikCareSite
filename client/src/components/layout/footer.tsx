@@ -17,7 +17,7 @@ export default function Footer() {
                   className="w-14 h-14 object-contain"
                 />
                 <div>
-                  <h3 className="text-lg font-bold text-white">Swastik Eye & Dental Care</h3>
+                  <h3 className="text-lg font-bold text-white">Swastik Eye &     <br /> Dental Care</h3>
                   <p className="text-gray-400 text-xs">Expert Medical Care</p>
                 </div>
               </div>
