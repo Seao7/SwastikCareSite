@@ -2,6 +2,11 @@ import { Link } from "wouter";
 import { Eye, MapPin, Phone, Mail, Clock, Users, Heart } from "lucide-react";
 
 export default function Footer() {
+  // Function to scroll to top
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-gray-900 text-white" data-testid="footer">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,11 +62,47 @@ export default function Footer() {
             <div>
               <h4 className="text-lg font-semibold mb-6 text-white">Quick Links</h4>
               <ul className="space-y-3 text-sm">
-                <li><Link href="/" className="text-gray-300 hover:text-blue-400 transition-colors">Home</Link></li>
-                <li><Link href="/about" className="text-gray-300 hover:text-blue-400 transition-colors">About Us</Link></li>
-                <li><Link href="/ayushman" className="text-gray-300 hover:text-blue-400 transition-colors">Ayushman Service</Link></li>
-                <li><Link href="/contact" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</Link></li>
-                <li><a href="tel:+919956239488" className="text-gray-300 hover:text-blue-400 transition-colors">Book Appointment</a></li>
+                <li>
+                  <Link 
+                    href="/" 
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    onClick={scrollToTop}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/about" 
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    onClick={scrollToTop}
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/ayushman" 
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    onClick={scrollToTop}
+                  >
+                    Ayushman Service
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/contact" 
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    onClick={scrollToTop}
+                  >
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <a href="tel:+919956239488" className="text-gray-300 hover:text-blue-400 transition-colors">
+                    Book Appointment
+                  </a>
+                </li>
               </ul>
             </div>
 
