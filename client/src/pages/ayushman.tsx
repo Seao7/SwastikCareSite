@@ -84,12 +84,6 @@ export default function Ayushman() {
               <p className="text-lg medical-gray leading-relaxed mb-8">
                 We are proud to be an empanelled provider under this scheme, ensuring that quality eye care is accessible to all eligible families without financial burden.
               </p>
-              <a href="tel:+919956239488">
-                <Button className="bg-green-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-green-700 transition-colors shadow-lg" data-testid="ayushman-contact-button">
-                  <Phone className="mr-2" size={20} />
-                  Call for Assistance: +91 99562 39488
-                </Button>
-              </a>
             </div>
             <div>
               <img 
