@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ServiceCard from "@/components/ui/service-card";
-import { Eye, Users, Heart, Cog, CheckCircle, Calendar, Phone, Ambulance } from "lucide-react";
+import { Eye, Users, Heart, Cog, CheckCircle, Calendar, Phone, Ambulance, Award, GraduationCap } from "lucide-react";
 import { Link } from "wouter";
 import { ImageCarousel } from "@/components/ui/image-carousel";
 
@@ -58,6 +58,27 @@ export default function Home() {
     }
   ];
 
+  const doctors = [
+    {
+      name: "Dr. R.N. Agrawal",
+      specialization: "Eye Specialist",
+      qualifications: "MS KGMU",
+      experience: "20+ Years Experience",
+      description: "Expert eye surgeon with MS qualification from King George's Medical University, specializing in advanced eye treatments and LASIK surgery.",
+      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+      color: "bg-medical-blue"
+    },
+    {
+      name: "Dr. Ruchi Agrawal",
+      specialization: "Dental Specialist",
+      qualifications: "BDS Lucknow",
+      experience: "20+ Years Experience",
+      description: "Qualified dentist with BDS from Lucknow, specializing in comprehensive dental care, cosmetic dentistry, and oral health services.",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+      color: "bg-soft-teal"
+    }
+  ];
+
   return (
     <div data-testid="home-page">
       {/* Hero Section */}
@@ -104,8 +125,62 @@ export default function Home() {
                 className="rounded-2xl shadow-2xl w-full h-96"
                 testId="hero-image-carousel"
               />
-             
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet Our Expert Doctors Section */}
+      <section className="py-20 bg-white" data-testid="doctors-section">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4" data-testid="doctors-title">
+              Meet Our Expert Doctors
+            </h2>
+            <p className="text-xl medical-gray max-w-3xl mx-auto" data-testid="doctors-description">
+              Our renowned medical professionals bring decades of experience and expertise to provide you with exceptional healthcare
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {doctors.map((doctor, index) => (
+              <div key={index} className={`group hover:transform hover:scale-105 transition-all duration-300 ${index === 1 ? 'lg:order-last' : ''}`}>
+                <Card className="border-0 shadow-xl rounded-2xl overflow-hidden bg-gradient-to-br from-white to-gray-50">
+                  <CardContent className="p-0">
+                    <div className="relative">
+                      <img 
+                        src={doctor.image}
+                        alt={`${doctor.name} - ${doctor.specialization}`}
+                        className="w-full h-108 object-cover"
+                      />
+                      <div className={`absolute bottom-0 left-0 right-0 ${doctor.color} bg-opacity-90 text-white py-3 px-4`}>
+                        <div className="flex items-center space-x-2">
+                          <Award className="text-white" size={18} />
+                          <span className="font-medium text-sm">{doctor.experience}</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="p-8 space-y-4">
+                      <div className="text-center">
+                        <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2 transition-colors duration-300 group-hover:text-blue-600">
+                          {doctor.name}
+                        </h3>
+                        <div className="flex items-center justify-center space-x-2 mb-3">
+                          <GraduationCap className={doctor.color.replace('bg-', 'text-')} size={20} />
+                          <span className="font-semibold text-lg medical-blue">{doctor.qualifications}</span>
+                        </div>
+                        <p className="text-lg font-medium medical-gray mb-4">{doctor.specialization}</p>
+                      </div>
+                      
+                      <p className="text-medical-gray leading-relaxed text-center">
+                        {doctor.description}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
           </div>
         </div>
       </section>
