@@ -65,7 +65,7 @@ export default function Home() {
       qualifications: "MS KGMU",
       experience: "20+ Years Experience",
       description: "Expert eye surgeon with MS qualification from King George's Medical University, specializing in advanced eye treatments and LASIK surgery.",
-      image: "dr_rn_zoom2.png",
+      image: "dr_rn_agrawal.png",
       color: "bg-medical-blue"
     },
     {
@@ -74,19 +74,10 @@ export default function Home() {
       qualifications: "BDS Lucknow",
       experience: "20+ Years Experience",
       description: "Qualified dentist with BDS from Lucknow, specializing in comprehensive dental care, cosmetic dentistry, and oral health services.",
-      image: "dr_ruchi_zoom2.png",
+      image: "dr_ruchi_agrawal.png",
       color: "bg-soft-teal"
     }
   ];
-
-  // Inline styles for carousel fix ONLY
-  const carouselContainerStyle = {
-    position: 'relative' as const,
-    width: '100%',
-    height: '24rem',
-    overflow: 'hidden' as const,
-    borderRadius: '1rem'
-  };
 
   return (
     <div data-testid="home-page">
@@ -120,26 +111,24 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div style={carouselContainerStyle} className="shadow-2xl">
-                <ImageCarousel
-                  images={[
-                    {
-                      src: "/eye.jpeg",
-                      alt: "Modern eye examination room with advanced equipment at Swastik Eye & Dental Care"
-                    },
-                    {
-                      src: "/dental.jpeg", 
-                      alt: "Professional dental examination with modern equipment at Swastik Eye & Dental Care"
-                    },
-                    {
-                      src: "/team.jpeg", 
-                      alt: "Team at Swastik Eye and Dental Care"
-                    }
-                  ]}
-                  className="w-full h-full [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:object-center [&_img]:rounded-2xl [&>div]:w-full [&>div]:h-full [&>div>div]:w-full [&>div>div]:h-full"
-                  testId="hero-image-carousel"
-                />
-              </div>
+              <ImageCarousel
+                images={[
+                  {
+                    src: "/eye.jpeg",
+                    alt: "Modern eye examination room with advanced equipment at Swastik Eye & Dental Care"
+                  },
+                  {
+                    src: "/dental.jpeg", 
+                    alt: "Professional dental examination with modern equipment at Swastik Eye & Dental Care"
+                  },
+                  {
+                    src: "/team.jpeg", 
+                    alt: "Team at Swastik Eye and Dental Care"
+                  }
+                ]}
+                className="rounded-2xl shadow-2xl w-full h-96"
+                testId="hero-image-carousel"
+              />
             </div>
           </div>
         </div>
@@ -166,7 +155,7 @@ export default function Home() {
                       <img 
                         src={doctor.image}
                         alt={`${doctor.name} - ${doctor.specialization}`}
-                        className="w-full h-96 object-cover"
+                        className="w-full h-108 object-cover"
                       />
                       <div className={`absolute bottom-0 left-0 right-0 ${doctor.color} bg-opacity-90 text-white py-3 px-4`}>
                         <div className="flex items-center space-x-2">
@@ -245,26 +234,25 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div style={carouselContainerStyle} className="shadow-xl">
-                <ImageCarousel
-                  images={[
-                    {
-                      src: "eye2.jpeg",
-                      alt: "Professional dental care setup with modern equipment"
-                    },
-                    {
-                      src: "glasses.jpeg", 
-                      alt: "Chashma Centre @ Swastik Eye and Dental Care"
-                    },
-                    {
-                      src: "tech.jpeg", 
-                      alt: "Advanced Machinery @ Swastik Eye and Dental Care"
-                    } 
-                  ]}
-                  className="w-full h-full [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:object-center [&_img]:rounded-2xl [&>div]:w-full [&>div]:h-full [&>div>div]:w-full [&>div>div]:h-full"
-                  testId="why-choose-image-carousel"
-                />
-              </div>
+              <ImageCarousel
+                images={[
+                  {
+                    src: "eye2.jpeg",
+                    alt: "Professional dental care setup with modern equipment"
+                  },
+                  {
+                    src: "glasses.jpeg", 
+                    alt: "Chashma Centre @ Swastik Eye and Dental Care"
+                  },
+                  {
+                    src: "tech.jpeg", 
+                    alt: "Advanced Machinery @ Swastik Eye and Dental"
+                  } 
+
+                ]}
+                className="rounded-2xl shadow-xl w-full h-96"
+                testId="why-choose-image-carousel"
+              />
             </div>
             <div className="space-y-8">
               <div>
