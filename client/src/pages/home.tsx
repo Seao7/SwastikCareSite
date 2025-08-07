@@ -65,7 +65,7 @@ export default function Home() {
       qualifications: "MS KGMU",
       experience: "20+ Years Experience",
       description: "Expert eye surgeon with MS qualification from King George's Medical University, specializing in advanced eye treatments and LASIK surgery.",
-      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+      image: "dr_rn_agrawal.png",
       color: "bg-medical-blue"
     },
     {
@@ -74,7 +74,7 @@ export default function Home() {
       qualifications: "BDS Lucknow",
       experience: "20+ Years Experience",
       description: "Qualified dentist with BDS from Lucknow, specializing in comprehensive dental care, cosmetic dentistry, and oral health services.",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+      image: "dr_ruchi_agrawal.png",
       color: "bg-soft-teal"
     }
   ];
@@ -114,12 +114,16 @@ export default function Home() {
               <ImageCarousel
                 images={[
                   {
-                    src: "/clinic-interior.png",
+                    src: "/eye.jpeg",
                     alt: "Modern eye examination room with advanced equipment at Swastik Eye & Dental Care"
                   },
                   {
-                    src: "/dental-care.png", 
-                    alt: "Professional dental care setup with modern equipment"
+                    src: "/dental.jpeg", 
+                    alt: "Professional dental examination with modern equipment at Swastik Eye & Dental Care"
+                  },
+                  {
+                    src: "/team.jpeg", 
+                    alt: "Team at Swastik Eye and Dental Care"
                   }
                 ]}
                 className="rounded-2xl shadow-2xl w-full h-96"
@@ -233,13 +237,18 @@ export default function Home() {
               <ImageCarousel
                 images={[
                   {
-                    src: "/dental-care.png",
+                    src: "eye2.jpeg",
                     alt: "Professional dental care setup with modern equipment"
                   },
                   {
-                    src: "/clinic-interior.png", 
-                    alt: "Modern eye examination room with advanced equipment"
-                  }
+                    src: "glasses.jpeg", 
+                    alt: "Chashma Centre @ Swastik Eye and Dental Care"
+                  },
+                  {
+                    src: "tech.jpeg", 
+                    alt: "Advanced Machinery @ Swastik Eye and Dental Care"
+                  } 
+
                 ]}
                 className="rounded-2xl shadow-xl w-full h-96"
                 testId="why-choose-image-carousel"

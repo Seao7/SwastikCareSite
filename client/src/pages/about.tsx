@@ -9,21 +9,21 @@ export default function About() {
       name: "Dr. R.N. Agrawal",
       role: "Eye Specialist (MS KGMU)",
       description: "Expert eye surgeon with MS qualification from King George's Medical University, Fellowship in Anterior Segment Surgery from Shree Rann Ambika Eye Hospital, Bhairahava, Nepal and Phaco Fellowship from Sankara Nethralaya, Chennai.",
-      imageUrl: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+      imageUrl: "dr_rn_zoom.png",
       roleColor: "medical-blue"
     },
     {
       name: "Dr. Ruchi Agrawal",
       role: "Dentist (BDS Lucknow)",
       description: "Qualified dentist with BDS from Lucknow, specializing in comprehensive dental care and oral health services.",
-      imageUrl: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+      imageUrl: "dr_ruchi_zoom.png",
       roleColor: "soft-teal"
     },
     {
-      name: "Dr. Rahul",
-      role: "Visiting Retina Specialist",
+      name: "Dr. Rahul Sharma",
+      role: "Visiting Retina Specialist (MS KEM-Mumbai)",
       description: "Specialist in retinal conditions and treatments, providing expert care for complex eye conditions.",
-      imageUrl: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+      imageUrl: "dr_rahul.png",
       roleColor: "calm-green"
     },
 
@@ -103,8 +103,8 @@ export default function About() {
             
             <div className="space-y-8">
               <img 
-                src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500" 
-                alt="Modern medical equipment in clean facility" 
+                src="hosp.jpg"
+                alt="Swastik Eye and Dental Care" 
                 className="rounded-2xl shadow-xl w-full h-auto"
                 data-testid="mission-vision-image"
               />

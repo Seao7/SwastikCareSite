@@ -104,13 +104,13 @@ export default function Contact() {
     {
       icon: <Mail className="text-white" size={20} />,
       title: "Book your Appointment at",
-      content: "Call: 99562 39488\nDirect appointment booking",
+      content: "Call: +91 99562 39488\nDirect appointment booking",
       color: "bg-calm-green"
     },
     {
       icon: <Clock className="text-white" size={20} />,
       title: "Our Specialists",
-      content: "Dr. R.N. Agrawal - Eye Surgeon (MS KGMU)\nDr. Ruchi Agrawal - Dentist (BDS)\nDr. Rahul - Retina Specialist\nDr. Priyanka - Orthodontist",
+      content: "Dr. R.N. Agrawal - Eye Surgeon (MS KGMU)\nDr. Ruchi Agrawal - Dentist (BDS)\nDr. Rahul - Retina Specialist",
       color: "bg-purple-500"
     }
   ];
