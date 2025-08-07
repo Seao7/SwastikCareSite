@@ -126,7 +126,7 @@ export default function Home() {
                     alt: "Team at Swastik Eye and Dental Care"
                   }
                 ]}
-                className="rounded-2xl shadow-2xl w-full h-96 [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:object-center"
+                className="rounded-2xl shadow-2xl w-full h-96"
                 testId="hero-image-carousel"
               />
             </div>
@@ -155,7 +155,7 @@ export default function Home() {
                       <img 
                         src={doctor.image}
                         alt={`${doctor.name} - ${doctor.specialization}`}
-                        className="w-full h-96 object-cover"
+                        className="w-full h-108 object-cover"
                       />
                       <div className={`absolute bottom-0 left-0 right-0 ${doctor.color} bg-opacity-90 text-white py-3 px-4`}>
                         <div className="flex items-center space-x-2">
@@ -246,10 +246,11 @@ export default function Home() {
                   },
                   {
                     src: "tech.jpeg", 
-                    alt: "Advanced Machinery @ Swastik Eye and Dental Care"
+                    alt: "Advanced Machinery @ Swastik Eye and Dental"
                   } 
+
                 ]}
-                className="rounded-2xl shadow-xl w-full h-96 [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:object-center"
+                className="rounded-2xl shadow-xl w-full h-96"
                 testId="why-choose-image-carousel"
               />
             </div>
