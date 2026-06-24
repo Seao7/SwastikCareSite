@@ -2,8 +2,16 @@ import HeroSection from "@/components/ui/hero-section";
 import TeamMember from "@/components/ui/team-member";
 import { Card, CardContent } from "@/components/ui/card";
 import { Target, Eye, CheckCircle, Microscope, Stethoscope, Sofa } from "lucide-react";
+import { useSEO } from "@/hooks/use-seo";
 
 export default function About() {
+  useSEO({
+    title: "About Our Eye & Dental Doctors in Mau | Swastik Eye & Dental Care",
+    description:
+      "Meet our experienced specialists in Mau, UP: Dr. R.N. Agrawal (Eye Surgeon, MS KGMU), Dr. Ruchi Agrawal (Dentist, BDS) and Dr. Rahul (Retina Specialist). 20+ years of trusted eye and dental care.",
+    path: "/about",
+  });
+
   const teamMembers = [
     {
       name: "Dr. R.N. Agrawal",

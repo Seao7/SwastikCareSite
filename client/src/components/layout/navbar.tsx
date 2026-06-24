@@ -32,7 +32,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 flex-1 min-w-0" data-testid="logo-link" onClick={scrollToTop}>
             <img 
-              src="logo-no-bg.png" 
+              src="/logo-no-bg.png"
               alt="Swastik Eye & Dental Care Logo"
               className="w-16 h-16 sm:w-18 sm:h-18 object-contain flex-shrink-0"
             />

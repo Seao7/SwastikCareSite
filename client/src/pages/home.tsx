@@ -4,8 +4,16 @@ import ServiceCard from "@/components/ui/service-card";
 import { Eye, Users, Heart, Cog, CheckCircle, Calendar, Phone, Ambulance, Award, GraduationCap } from "lucide-react";
 import { Link } from "wouter";
 import { ImageCarousel } from "@/components/ui/image-carousel";
+import { useSEO } from "@/hooks/use-seo";
 
 export default function Home() {
+  useSEO({
+    title: "Eye Doctor & Dentist in Mau, UP | Swastik Eye & Dental Care",
+    description:
+      "Best eye doctor and dental clinic in Mau, Uttar Pradesh. Cataract surgery, LASIK, retina care & complete dental treatment by Dr. R.N. Agrawal (MS KGMU) & Dr. Ruchi Agrawal (BDS). Ayushman Bharat accepted. Call +91 99562 39488.",
+    path: "/",
+  });
+
   const services = [
     {
       icon: <Eye className="text-white" size={24} />,

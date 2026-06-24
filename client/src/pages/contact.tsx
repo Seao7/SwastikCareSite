@@ -13,9 +13,17 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
 import { MapPin, Phone, Mail, Clock, TriangleAlert, Calendar, MessageCircle } from "lucide-react";
+import { useSEO } from "@/hooks/use-seo";
 
 export default function Contact() {
   const { toast } = useToast();
+
+  useSEO({
+    title: "Contact & Book Appointment | Swastik Eye & Dental Care, Mau",
+    description:
+      "Visit Swastik Eye & Dental Care at Sahadatpura, Near Roadways, Mau - 275101, UP. Book an eye or dental appointment: call +91 99562 39488 or email sedcmau@gmail.com.",
+    path: "/contact",
+  });
 
   const form = useForm<InsertContact>({
     resolver: zodResolver(insertContactSchema),

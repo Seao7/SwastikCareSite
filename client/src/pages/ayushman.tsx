@@ -2,8 +2,16 @@ import HeroSection from "@/components/ui/hero-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check, Shield, Heart, Users, CreditCard, Phone, FileText, Star, Eye } from "lucide-react";
+import { useSEO } from "@/hooks/use-seo";
 
 export default function Ayushman() {
+  useSEO({
+    title: "Ayushman Bharat Cashless Eye & Dental Treatment in Mau | Swastik Eye & Dental Care",
+    description:
+      "Cashless eye and dental treatment up to ₹5 lakh under Ayushman Bharat at Swastik Eye & Dental Care, Mau, UP. Check eligibility and book today. Call +91 99562 39488.",
+    path: "/ayushman",
+  });
+
   const benefits = [
     "₹5 lakh health coverage per family per year",
     "Cashless treatment at empanelled hospitals",

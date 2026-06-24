@@ -3,15 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Swastik Eye & Dental Care</title>
-    
-    <!-- Just add this line in the <head> section -->
-    <link rel="icon" href="logo-white-no-bg-big.png" type="image/png">
+    <title>Swastik Eye & Dental Care — Eye & Dental Hospital in Mau, UP</title>
+    <meta name="description" content="Swastik Eye & Dental Care in Mau, Uttar Pradesh. Expert eye care (LASIK, cataract, retina) and complete dental treatment. Ayushman Bharat cashless treatment available. Call +91 99562 39488." />
+    <meta name="keywords" content="eye hospital Mau, dental clinic Mau, LASIK Mau, cataract surgery, dentist Mau, Ayushman Bharat, Swastik Eye Dental Care" />
+    <meta name="theme-color" content="#1e6fd9" />
+    <link rel="canonical" href="https://sedcmau.in/" />
+
+    <link rel="icon" href="/logo-white-no-bg-big.png" type="image/png">
+
+    <!-- Open Graph (preview when shared on WhatsApp, Facebook, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Swastik Eye & Dental Care — Mau, UP" />
+    <meta property="og:description" content="Expert eye and dental care in Mau, Uttar Pradesh. Ayushman Bharat cashless treatment available. Call +91 99562 39488." />
+    <meta property="og:image" content="/logo-no-bg.png" />
+    <meta name="twitter:card" content="summary" />
 
     <!-- Google Fonts for Traditional Medical Feel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Structured data: tells Google this is a local medical clinic in Mau.
+         Strong signal for "eye doctor in Mau" type searches. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["MedicalClinic", "Optician"],
+      "name": "Swastik Eye & Dental Care",
+      "url": "https://sedcmau.in/",
+      "image": "https://sedcmau.in/logo-no-bg.png",
+      "logo": "https://sedcmau.in/logo-no-bg.png",
+      "telephone": "+91-99562-39488",
+      "email": "sedcmau@gmail.com",
+      "priceRange": "₹₹",
+      "currenciesAccepted": "INR",
+      "medicalSpecialty": ["Ophthalmic", "Dentistry"],
+      "description": "Eye and dental hospital in Mau, Uttar Pradesh offering cataract surgery, LASIK, retina care and complete dental treatment. Ayushman Bharat cashless treatment accepted.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Sahadatpura, Near Roadways",
+        "addressLocality": "Mau",
+        "addressRegion": "Uttar Pradesh",
+        "postalCode": "275101",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 25.937226,
+        "longitude": 83.565676
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "20:00"
+        }
+      ],
+      "availableService": [
+        { "@type": "MedicalProcedure", "name": "Cataract Surgery" },
+        { "@type": "MedicalProcedure", "name": "LASIK Surgery" },
+        { "@type": "MedicalProcedure", "name": "Retina Treatment" },
+        { "@type": "MedicalProcedure", "name": "Dental Care" }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
