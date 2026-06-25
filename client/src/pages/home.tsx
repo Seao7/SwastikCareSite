@@ -73,7 +73,7 @@ export default function Home() {
       qualifications: "MS KGMU",
       experience: "20+ Years Experience",
       description: "Expert eye surgeon with MS qualification from King George's Medical University, specializing in advanced eye treatments and LASIK surgery.",
-      image: "dr_rn_agrawal.png",
+      image: "dr_rn_agrawal.webp",
       color: "bg-medical-blue"
     },
     {
@@ -82,7 +82,7 @@ export default function Home() {
       qualifications: "BDS Lucknow",
       experience: "20+ Years Experience",
       description: "Qualified dentist with BDS from Lucknow, specializing in comprehensive dental care, cosmetic dentistry, and oral health services.",
-      image: "dr_ruchi_agrawal.png",
+      image: "dr_ruchi_agrawal.webp",
       color: "bg-soft-teal"
     }
   ];

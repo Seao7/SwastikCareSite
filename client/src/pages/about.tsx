@@ -17,21 +17,21 @@ export default function About() {
       name: "Dr. R.N. Agrawal",
       role: "Eye Specialist (MS KGMU)",
       description: "Expert eye surgeon with MS qualification from King George's Medical University, Fellowship in Anterior Segment Surgery from Shree Rann Ambika Eye Hospital, Bhairahava, Nepal and Phaco Fellowship from Sankara Nethralaya, Chennai.",
-      imageUrl: "dr_rn_zoom.png",
+      imageUrl: "dr_rn_zoom.webp",
       roleColor: "medical-blue"
     },
     {
       name: "Dr. Ruchi Agrawal",
       role: "Dentist (BDS Lucknow)",
       description: "Qualified dentist with BDS from Lucknow, specializing in comprehensive dental care and oral health services.",
-      imageUrl: "dr_ruchi_zoom.png",
+      imageUrl: "dr_ruchi_zoom.webp",
       roleColor: "soft-teal"
     },
     {
       name: "Dr. Rahul Sharma",
       role: "Visiting Retina Specialist (MS KEM-Mumbai)",
       description: "Specialist in retinal conditions and treatments, providing expert care for complex eye conditions.",
-      imageUrl: "dr_rahul.png",
+      imageUrl: "dr_rahul.webp",
       roleColor: "calm-green"
     },
 
