@@ -122,15 +122,15 @@ export default function Home() {
               <ImageCarousel
                 images={[
                   {
-                    src: "/eye.jpeg",
+                    src: "/eye.webp",
                     alt: "Modern eye examination room with advanced equipment at Swastik Eye & Dental Care"
                   },
                   {
-                    src: "/dental.jpeg", 
+                    src: "/dental.webp", 
                     alt: "Professional dental examination with modern equipment at Swastik Eye & Dental Care"
                   },
                   {
-                    src: "/team.jpeg", 
+                    src: "/team.webp", 
                     alt: "Team at Swastik Eye and Dental Care"
                   }
                 ]}
@@ -245,15 +245,15 @@ export default function Home() {
               <ImageCarousel
                 images={[
                   {
-                    src: "eye2.jpeg",
+                    src: "eye2.webp",
                     alt: "Professional dental care setup with modern equipment"
                   },
                   {
-                    src: "glasses.jpeg", 
+                    src: "glasses.webp", 
                     alt: "Chashma Centre @ Swastik Eye and Dental Care"
                   },
                   {
-                    src: "tech.jpeg", 
+                    src: "tech.webp", 
                     alt: "Advanced Machinery @ Swastik Eye and Dental"
                   } 
 

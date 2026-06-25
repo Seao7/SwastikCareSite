@@ -111,7 +111,7 @@ export default function About() {
             
             <div className="space-y-8">
               <img 
-                src="hosp.jpg"
+                src="hosp.webp"
                 alt="Swastik Eye and Dental Care" 
                 className="rounded-2xl shadow-xl w-full h-auto"
                 data-testid="mission-vision-image"
